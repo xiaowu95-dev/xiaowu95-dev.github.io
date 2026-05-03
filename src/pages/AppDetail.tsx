@@ -79,15 +79,7 @@ export default function AppDetail() {
               <motion.p
                 initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: sectionEase, delay: 0.13 }}
-                className="mt-3 max-w-readable text-sm leading-relaxed text-gray-500 sm:text-base"
-              >
-                {t('kogo.nameEtymology')}
-              </motion.p>
-              <motion.p
-                initial={{ opacity: 0, y: 18 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: sectionEase, delay: 0.16 }}
+                transition={{ duration: 0.6, ease: sectionEase, delay: 0.14 }}
                 className="mt-8 max-w-readable font-display text-xl font-medium leading-snug text-[color:oklch(0.94_0.02_85)] sm:text-2xl"
               >
                 {t('kogo.sloganMain')}
@@ -95,7 +87,7 @@ export default function AppDetail() {
               <motion.p
                 initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: sectionEase, delay: 0.19 }}
+                transition={{ duration: 0.6, ease: sectionEase, delay: 0.18 }}
                 className="mt-2 max-w-readable text-base leading-relaxed text-gold-500/95 sm:text-lg"
               >
                 {t('kogo.sloganSub')}
@@ -103,7 +95,7 @@ export default function AppDetail() {
               <motion.p
                 initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: sectionEase, delay: 0.22 }}
+                transition={{ duration: 0.6, ease: sectionEase, delay: 0.21 }}
                 className="mt-4 max-w-readable text-sm leading-relaxed text-gray-500"
               >
                 {t('kogo.sloganHint')}
@@ -112,7 +104,7 @@ export default function AppDetail() {
               <motion.div
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.55, ease: sectionEase, delay: 0.28 }}
+                transition={{ duration: 0.55, ease: sectionEase, delay: 0.26 }}
                 className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-stretch"
               >
                 <a

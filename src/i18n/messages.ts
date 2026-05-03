@@ -38,10 +38,10 @@ export const messages = {
       portfolioLabel: '作品集',
       heroTitle: 'Kogo（コゴ）',
       heroBody:
-        '来自「小五」→ Kogo（自然映射）。教材式学习、间隔复习与 JLPT 练习在同一路径里，适合每天稳步向前的人。下面是产品与我的简短说明。',
+        '教材式学习、间隔复习与 JLPT 练习在同一路径里，适合每天稳步向前的人。',
       aboutTitle: '关于我',
       aboutBody:
-        '我是一名普通开发人员，工作之余写代码、做一点小产品。Kogo 是我在打磨的日语学习应用，欢迎试用和反馈。',
+        '我是一名程序员，工作之余写代码、做一点小产品。Kogo 是我在打磨的日语学习应用，欢迎试用和反馈。',
       cardView: '查看',
       cardOpenDetail: '了解 Kogo',
       cardStayTuned: '敬请期待',
@@ -58,7 +58,6 @@ export const messages = {
       back: '← 返回首页',
       rangeTag: 'JLPT · 教材 · 复习',
       heroName: 'Kogo（コゴ）',
-      nameEtymology: '来自「小五」→ Kogo（自然映射）',
       sloganMain: 'Learn Japanese, step by step.',
       sloganSub: 'Your daily path to JLPT mastery.',
       sloganHint: '我们强调日积月累的节奏，而不是一夜速成的承诺。',
@@ -67,7 +66,7 @@ export const messages = {
         '功能来自我实际在写的应用：学习、练习、记忆、模考共用同一套内容与进度。',
       featureCourseTitle: '课程式学习',
       featureCourseBody:
-        '按教材节奏推进（当前主线：新标日初级上 / N5），课时里嵌小题，学完即练。',
+        '按教材节奏推进，课时里嵌小题，学完即练。',
       featureReviewTitle: '记忆与复习',
       featureReviewBody:
         '间隔复习调度复习队列，把词汇和语法从短期练回长期，而不是堆到考前一晚。',
@@ -83,7 +82,7 @@ export const messages = {
       storeAndroidVersion: '最新版本：{{v}}',
     },
     footer: {
-      copyrightLine: '© Copyright 2021, All Rights Reserved by Xiaowu Dev',
+      copyrightLine: '© Copyright 2026, All Rights Reserved by Xiaowu Dev',
     },
     phone: {
       appLabel: 'Kogo（コゴ）',
@@ -106,7 +105,7 @@ export const messages = {
       portfolioLabel: 'Portfolio',
       heroTitle: 'Kogo（コゴ）',
       heroBody:
-        'From Xiaowu (小五) to Kogo: a natural mapping. Textbook-style lessons, spaced review, and JLPT drills share one path for people who want steady daily progress. Below is the product and a short note about me.',
+        'Textbook-style lessons, spaced review, and JLPT drills share one path for people who want steady daily progress. Below is the product and a short note about me.',
       aboutTitle: 'About',
       aboutBody:
         'I am a regular developer. I write code and side projects after work. Kogo is the Japanese study app I am building and polishing, feedback is welcome.',
@@ -127,7 +126,6 @@ export const messages = {
       back: '← Home',
       rangeTag: 'JLPT · Course · Review',
       heroName: 'Kogo（コゴ）',
-      nameEtymology: 'From Xiaowu (小五) to Kogo: a natural mapping.',
       sloganMain: 'Learn Japanese, step by step.',
       sloganSub: 'Your daily path to JLPT mastery.',
       sloganHint: 'We emphasize steady, daily progress, not overnight promises.',
@@ -152,7 +150,7 @@ export const messages = {
       storeAndroidVersion: 'Latest version: {{v}}',
     },
     footer: {
-      copyrightLine: '© Copyright 2021, All Rights Reserved by Xiaowu Dev',
+      copyrightLine: '© Copyright 2026, All Rights Reserved by Xiaowu Dev',
     },
     phone: {
       appLabel: 'Kogo（コゴ）',

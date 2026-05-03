@@ -29,9 +29,10 @@ export default function Home() {
   return (
     <div className="gold-ambient flex min-h-screen flex-col">
       <SiteHeader />
-      <main className="flex-1">
-        <section className="mx-auto max-w-6xl px-6 pb-16 pt-16 sm:px-8 sm:pt-20">
-          <div className="max-w-2xl">
+      <main className="flex min-h-0 flex-1 flex-col">
+        <section className="flex flex-1 flex-col">
+          <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col px-6 pb-16 pt-16 sm:px-8 sm:pt-20">
+            <div className="max-w-2xl">
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
@@ -104,11 +105,15 @@ export default function Home() {
               )
             })}
             </motion.ul>
+            </div>
           </div>
         </section>
 
-        <section id="about" className="border-t border-white/[0.05] bg-black/20 py-20">
-          <div className="mx-auto max-w-6xl px-6 sm:px-8">
+        <section
+          id="about"
+          className="mt-auto border-t border-white/[0.05] bg-black/20 py-16 sm:py-20"
+        >
+          <div className="mx-auto w-full max-w-6xl px-6 sm:px-8">
             <motion.div
               initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
