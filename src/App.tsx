@@ -6,7 +6,7 @@ export default function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/app/jlpt" element={<AppDetail />} />
+      <Route path="/app/kogo" element={<AppDetail />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   )

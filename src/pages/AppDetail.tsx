@@ -1,54 +1,34 @@
 import { motion } from 'framer-motion'
-import { Brain, Crown, Library, Timer } from 'lucide-react'
+import { BookOpen, Brain, ListChecks, Timer } from 'lucide-react'
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { PhoneMockup } from '@/components/PhoneMockup'
 import { SiteFooter } from '@/components/SiteFooter'
 import { SiteHeader } from '@/components/SiteHeader'
-import { useI18n } from '@/i18n/useI18n'
 import { getMessage } from '@/i18n/messages'
+import { useI18n } from '@/i18n/useI18n'
 
 const featureDefs = [
-  { id: 'forget' as const, icon: Brain },
-  { id: 'exam' as const, icon: Library },
-  { id: 'ui' as const, icon: Crown },
-  { id: 'time' as const, icon: Timer },
+  { id: 'course' as const, icon: BookOpen },
+  { id: 'review' as const, icon: Brain },
+  { id: 'practice' as const, icon: ListChecks },
+  { id: 'rhythm' as const, icon: Timer },
 ]
 
 const FEATURE_KEYS: Record<(typeof featureDefs)[number]['id'], readonly [string, string]> = {
-  forget: ['jlpt.featureForgetTitle', 'jlpt.featureForgetBody'],
-  exam: ['jlpt.featureExamTitle', 'jlpt.featureExamBody'],
-  ui: ['jlpt.featureUiTitle', 'jlpt.featureUiBody'],
-  time: ['jlpt.featureTimeTitle', 'jlpt.featureTimeBody'],
+  course: ['kogo.featureCourseTitle', 'kogo.featureCourseBody'],
+  review: ['kogo.featureReviewTitle', 'kogo.featureReviewBody'],
+  practice: ['kogo.featurePracticeTitle', 'kogo.featurePracticeBody'],
+  rhythm: ['kogo.featureRhythmTitle', 'kogo.featureRhythmBody'],
 }
 
 const sectionEase = [0.22, 1, 0.36, 1] as const
-
-function HeroProductName() {
-  const { locale } = useI18n()
-  const latin = 'Yukō'
-  const kanji = '優光'
-
-  if (locale === 'zh') {
-    return (
-      <>
-        <span className="text-gold-500">{kanji}</span> {latin}
-      </>
-    )
-  }
-
-  return (
-    <>
-      {latin} <span className="text-gold-500">{kanji}</span>
-    </>
-  )
-}
 
 export default function AppDetail() {
   const { locale, t } = useI18n()
 
   useEffect(() => {
-    document.title = t('jlpt.pageTitle')
+    document.title = t('kogo.pageTitle')
     return () => {
       document.title = getMessage(locale, 'documentTitle')
     }
@@ -66,7 +46,7 @@ export default function AppDetail() {
             className="text-sm text-gray-500"
           >
             <Link to="/" className="text-gold-500/90 transition-colors hover:text-gold-400">
-              {t('jlpt.back')}
+              {t('kogo.back')}
             </Link>
           </motion.p>
 
@@ -78,7 +58,7 @@ export default function AppDetail() {
                 transition={{ duration: 0.5, ease: sectionEase, delay: 0.05 }}
                 className="text-xs font-semibold uppercase tracking-[0.3em] text-gold-500/90"
               >
-                {t('jlpt.rangeTag')}
+                {t('kogo.rangeTag')}
               </motion.p>
               <motion.h1
                 initial={{ opacity: 0, y: 18 }}
@@ -86,7 +66,7 @@ export default function AppDetail() {
                 transition={{ duration: 0.6, ease: sectionEase, delay: 0.1 }}
                 className="mt-5 font-display text-4xl font-semibold leading-[1.08] text-[color:oklch(0.95_0.015_85)] sm:text-5xl lg:text-[3.15rem]"
               >
-                <HeroProductName />
+                Kogo
               </motion.h1>
               <motion.p
                 initial={{ opacity: 0, y: 18 }}
@@ -94,7 +74,7 @@ export default function AppDetail() {
                 transition={{ duration: 0.6, ease: sectionEase, delay: 0.16 }}
                 className="mt-5 max-w-readable text-lg leading-relaxed text-gray-400 sm:text-xl"
               >
-                {t('jlpt.heroLead')}
+                {t('kogo.heroLead')}
               </motion.p>
 
               <motion.div
@@ -136,9 +116,9 @@ export default function AppDetail() {
               className="max-w-xl"
             >
               <h2 className="font-display text-2xl text-[color:oklch(0.94_0.015_85)] sm:text-3xl">
-                {t('jlpt.featuresHeading')}
+                {t('kogo.featuresHeading')}
               </h2>
-              <p className="mt-4 text-gray-400 leading-relaxed">{t('jlpt.featuresSub')}</p>
+              <p className="mt-4 text-gray-400 leading-relaxed">{t('kogo.featuresSub')}</p>
             </motion.div>
 
             <div className="mt-14 grid gap-8 sm:grid-cols-2">

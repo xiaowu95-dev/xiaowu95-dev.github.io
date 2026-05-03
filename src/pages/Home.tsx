@@ -21,11 +21,7 @@ const rise = {
   },
 }
 
-const appDefs = [
-  { id: 'jlpt' as const, slug: '/app/jlpt', featured: true },
-  { id: 'kanji' as const, slug: '#', featured: false },
-  { id: 'listening' as const, slug: '#', featured: false },
-]
+const appDefs = [{ id: 'kogo' as const, slug: '/app/kogo', featured: true }]
 
 export default function Home() {
   const { t } = useI18n()
@@ -56,7 +52,7 @@ export default function Home() {
             variants={stagger}
             initial="hidden"
             animate="show"
-            className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+            className="mx-auto mt-14 grid max-w-xl gap-6"
           >
             {appDefs.map((app) => {
               const title = t(`apps.${app.id}.title`)

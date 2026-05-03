@@ -24,9 +24,10 @@ export function persistLocale(locale: Locale) {
 
 export const messages = {
   zh: {
-    documentTitle: 'Studio Wu · 应用',
+    documentTitle: 'Xiaowu Dev · 作品',
     nav: {
-      appsTag: '应用',
+      brand: 'Xiaowu Dev',
+      appsTag: '作品',
       work: '作品',
       about: '关于我',
       langZh: '中文',
@@ -35,67 +36,60 @@ export const messages = {
     },
     home: {
       portfolioLabel: '作品集',
-      heroTitle: '为扎实的日语学习而做的应用。',
+      heroTitle: '目前我只维护一款作品：Kogo。',
       heroBody:
-        '这是我设计与发布的一组安静工具。复杂度低，尊重你的时间，以工艺感取代噪音。',
+        'Kogo 把教材式学习、间隔复习和 JLPT 练习与模考串在一条路径里，面向「每天能推进一点」的人。下面是产品与我的简单介绍。',
       aboutTitle: '关于我',
       aboutBody:
-        '我希望学习产品像书架上装帧考究的版本：字体自信、留白慷慨、没有噪音。你可以把这里换成简介、荣誉或联系方式。',
+        '我是一名普通开发人员，工作之余写代码、做一点小产品。Kogo 是我在打磨的日语学习应用，欢迎试用和反馈。',
       cardView: '查看',
-      cardOpenDetail: '查看详情',
+      cardOpenDetail: '了解 Kogo',
       cardStayTuned: '敬请期待',
     },
     apps: {
-      jlpt: {
-        title: 'JLPT：日语进阶',
-        subtitle: '遗忘曲线、真题模考，以及沉稳的学习节奏。',
-        badge: '旗舰',
-      },
-      kanji: {
-        title: '汉字笔顺实验室',
-        subtitle: '带压感笔触的手写训练。',
-        badge: '实验中',
-      },
-      listening: {
-        title: '听力客厅',
-        subtitle: '面向 N3–N1 的精选音频路径。',
-        badge: '即将推出',
+      kogo: {
+        title: 'Kogo',
+        subtitle: '教材节奏、记忆复习、JLPT 练习与模考，在一款应用里完成。',
+        badge: '进行中',
       },
     },
-    jlpt: {
-      pageTitle: '優光 Yukō · JLPT',
-      back: '← 全部应用',
-      rangeTag: 'JLPT / N5–N1',
-      heroName: '優光',
-      heroNameRuby: 'Yukō',
+    kogo: {
+      pageTitle: 'Kogo · 日语学习',
+      back: '← 返回首页',
+      rangeTag: 'JLPT · 教材 · 复习',
       heroLead:
-        '优雅掌握 JLPT。一节接一节的专注练习，背后是可信赖的结构。',
-      featuresHeading: '四个克制的承诺',
+        '跟着课时往前走，复习队列替你记住遗忘曲线；需要冲刺时，还有专项练习和整套模考。界面克制，把注意力留给语言本身。',
+      featuresHeading: '为真实学习流程做的四件事',
       featuresSub:
-        '每一块基石都诚实：记忆科学、考场还原、氛围与时间的尊重。',
-      featureForgetTitle: '智能遗忘曲线',
-      featureForgetBody: '按真实记忆衰减安排各级复习节奏，贴合 JLPT 分级。',
-      featureExamTitle: '历年真题，当下专注',
-      featureExamBody: '完整考试外壳与计时，让考场在试炼日前就熟悉起来。',
-      featureUiTitle: '黑金沉浸',
-      featureUiBody: '暗淡平静的界面，深夜学习时也不刺眼。',
-      featureTimeTitle: '节奏感知的学时',
-      featureTimeBody: '短冲刺或长跑，计时器只在需要时出现。',
+        '功能来自我实际在写的应用：学习、练习、记忆、模考共用同一套内容与进度。',
+      featureCourseTitle: '课程式学习',
+      featureCourseBody:
+        '按教材节奏推进（当前主线：新标日初级上 / N5），课时里嵌小题，学完即练。',
+      featureReviewTitle: '记忆与复习',
+      featureReviewBody:
+        '间隔复习调度复习队列，把词汇和语法从短期练回长期，而不是堆到考前一晚。',
+      featurePracticeTitle: '练习与模拟考',
+      featurePracticeBody:
+        'JLPT 向专项训练与整套模拟卷，计时与题量尽量贴近正式参考，减少临场陌生感。',
+      featureRhythmTitle: '日常节奏',
+      featureRhythmBody:
+        '今日任务、连击与短时节奏练习，适合通勤和睡前的碎片时间，不把学习变成负担。',
     },
     footer: {
-      note: '为专注的日语学习而打造。',
+      note: 'Kogo 日语学习，个人作品。',
       emailLabel: '邮件',
     },
     phone: {
-      jlptLabel: 'JLPT',
+      appLabel: 'Kogo',
       placeholder: '截图占位',
-      hint: '请替换为 App Store 预览或应用内截图。',
+      hint: '可替换为 App Store 预览或应用内截图。',
     },
   },
   en: {
-    documentTitle: 'Studio Wu · Apps',
+    documentTitle: 'Xiaowu Dev · Work',
     nav: {
-      appsTag: 'Apps',
+      brand: 'Xiaowu Dev',
+      appsTag: 'Work',
       work: 'Work',
       about: 'About',
       langZh: '中文',
@@ -104,64 +98,53 @@ export const messages = {
     },
     home: {
       portfolioLabel: 'Portfolio',
-      heroTitle: 'Apps built for deliberate Japanese study.',
+      heroTitle: 'Right now I ship one product: Kogo.',
       heroBody:
-        'A quiet grid of tools I design and ship. Each keeps complexity low, respects your time, and leans into craft over noise.',
+        'Kogo connects textbook-style lessons, spaced review, and JLPT drills plus full mock exams in one flow, for people who want steady daily progress. Below is the product and a short note about me.',
       aboutTitle: 'About',
       aboutBody:
-        'I build study products that feel like a good edition on a shelf: confident typography, generous space, and no clutter. Replace this copy with your bio, awards, or contact preferences.',
+        'I am a regular developer. I write code and side projects after work. Kogo is the Japanese study app I am building and polishing, feedback is welcome.',
       cardView: 'View',
-      cardOpenDetail: 'Open detail',
+      cardOpenDetail: 'About Kogo',
       cardStayTuned: 'Stay tuned',
     },
     apps: {
-      jlpt: {
-        title: 'JLPT: Japanese Mastery',
-        subtitle: 'SRS, exams, and a calm study rhythm.',
-        badge: 'Flagship',
-      },
-      kanji: {
-        title: 'Kanji Trace Lab',
-        subtitle: 'Handwriting drills with pressure-aware strokes.',
-        badge: 'In lab',
-      },
-      listening: {
-        title: 'Listening Lounge',
-        subtitle: 'Curated audio paths for N3–N1.',
-        badge: 'Soon',
+      kogo: {
+        title: 'Kogo',
+        subtitle: 'Lessons, memory reviews, JLPT practice, and mocks in one app.',
+        badge: 'Active',
       },
     },
-    jlpt: {
-      pageTitle: 'Yukō 優光 · JLPT',
-      back: '← All apps',
-      rangeTag: 'JLPT / N5–N1',
-      heroName: 'Yukō',
-      heroNameRuby: '優光',
+    kogo: {
+      pageTitle: 'Kogo · Japanese study',
+      back: '← Home',
+      rangeTag: 'JLPT · Course · Review',
       heroLead:
-        'Master JLPT with elegance. One composed session after another, backed by structure you can trust.',
-      featuresHeading: 'Built around four quiet promises',
+        'Follow structured lessons, let the review queue handle forgetting, and reach for section drills or full mocks when you need exam fidelity. Calm UI, attention on the language.',
+      featuresHeading: 'Four things built around real study loops',
       featuresSub:
-        'Each pillar keeps the product honest: memory science, exam fidelity, atmosphere, and time kept sacred.',
-      featureForgetTitle: 'Intelligent forgetting curve',
-      featureForgetBody:
-        'Scheduling that respects how your memory actually ages across JLPT levels.',
-      featureExamTitle: 'Past papers, present focus',
-      featureExamBody:
-        'Full-length exam shells with timing, so the room feels familiar before test day.',
-      featureUiTitle: 'Black-gold immersion',
-      featureUiBody: 'A dim, calm interface that keeps evenings soft when you study late.',
-      featureTimeTitle: 'Rhythm-aware sessions',
-      featureTimeBody:
-        'Short bursts or deep runs; timers stay out of the way until you need them.',
+        'These match the app I am building: learn, practice, review, and mock exams share one content layer.',
+      featureCourseTitle: 'Structured lessons',
+      featureCourseBody:
+        'Progress by textbook-style units (current path: Shin Nihongo Beginner I, N5 goals), with micro-quizzes inside each lesson.',
+      featureReviewTitle: 'Memory and review',
+      featureReviewBody:
+        'Spaced scheduling drives the review queue so vocabulary and grammar move toward long-term recall.',
+      featurePracticeTitle: 'Drills and mock exams',
+      featurePracticeBody:
+        'JLPT-style section practice and full timed papers sized closer to official references, so the room feels familiar earlier.',
+      featureRhythmTitle: 'Daily rhythm',
+      featureRhythmBody:
+        'Today tasks, streaks, and short rhythm sessions for commutes and bedtime fragments without turning study into guilt.',
     },
     footer: {
-      note: 'Crafted for focused Japanese study.',
+      note: 'Kogo: Japanese study, a personal project.',
       emailLabel: 'Email',
     },
     phone: {
-      jlptLabel: 'JLPT',
+      appLabel: 'Kogo',
       placeholder: 'Screenshot placeholder',
-      hint: 'Replace with your App Store preview or in-app capture.',
+      hint: 'Swap in an App Store preview or in-app capture.',
     },
   },
 } as const satisfies Record<Locale, Record<string, unknown>>

@@ -10,7 +10,7 @@ export function SiteHeader() {
       <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-5 sm:px-8">
         <Link to="/" className="group flex items-baseline gap-2">
           <span className="font-display text-xl font-semibold tracking-tight text-[color:oklch(0.94_0.02_85)] transition-colors group-hover:text-gold-500">
-            Studio Wu
+            {t('nav.brand')}
           </span>
           <span className="hidden text-xs font-medium uppercase tracking-[0.22em] text-gray-500 sm:inline">
             {t('nav.appsTag')}

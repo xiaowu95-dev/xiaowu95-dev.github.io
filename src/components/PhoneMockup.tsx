@@ -34,7 +34,7 @@ export function PhoneMockup({ className = '' }: PhoneMockupProps) {
           <div className="relative aspect-[9/19] bg-[#0c0c0c]">
             <div className="absolute inset-4 rounded-2xl border border-gold-500/25 bg-gradient-to-br from-surface to-surface-deep" />
             <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 px-8 text-center">
-              <p className="font-display text-lg text-[color:oklch(0.93_0.02_85)]">{t('phone.jlptLabel')}</p>
+              <p className="font-display text-lg text-[color:oklch(0.93_0.02_85)]">{t('phone.appLabel')}</p>
               <p className="text-xs uppercase tracking-[0.2em] text-gold-500/90">{t('phone.placeholder')}</p>
               <p className="text-[11px] leading-relaxed text-gray-500">{t('phone.hint')}</p>
             </div>

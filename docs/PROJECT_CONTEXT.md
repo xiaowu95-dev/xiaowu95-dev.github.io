@@ -4,7 +4,7 @@ Use this file to keep agents and humans aligned. Update when scope, deploy URL, 
 
 ## Intent
 
-Static React portfolio for apps, starting with a JLPT Japanese study product. Visual language: matte black, metallic gold, editorial serif + modern sans, generous space, shiri.app-like calm hero and feature sections.
+Static React portfolio centered on **Kogo**, a Japanese study app (lessons, spaced review, JLPT practice). Visual language: matte black, metallic gold, editorial serif + modern sans, generous space, calm hero and feature sections.
 
 ## Stack
 
@@ -22,8 +22,8 @@ Static React portfolio for apps, starting with a JLPT Japanese study product. Vi
 
 | Path | Page |
 |------|------|
-| `/` | `Home.tsx` app grid |
-| `/app/jlpt` | `AppDetail.tsx` JLPT product |
+| `/` | `Home.tsx` portfolio |
+| `/app/kogo` | `AppDetail.tsx` Kogo product |
 
 ## Build checklist
 
