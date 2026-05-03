@@ -74,6 +74,10 @@ export const messages = {
       featureRhythmTitle: '日常节奏',
       featureRhythmBody:
         '今日任务、连击与短时节奏练习，适合通勤和睡前的碎片时间，不把学习变成负担。',
+      storeIosTitle: 'iOS 下载',
+      storeIosVersion: '最新版本：{{v}}',
+      storeAndroidTitle: 'Android 下载',
+      storeAndroidVersion: '最新版本：{{v}}',
     },
     footer: {
       note: 'Kogo 日语学习，个人作品。',
@@ -136,6 +140,10 @@ export const messages = {
       featureRhythmTitle: 'Daily rhythm',
       featureRhythmBody:
         'Today tasks, streaks, and short rhythm sessions for commutes and bedtime fragments without turning study into guilt.',
+      storeIosTitle: 'iOS download',
+      storeIosVersion: 'Latest version: {{v}}',
+      storeAndroidTitle: 'Android download',
+      storeAndroidVersion: 'Latest version: {{v}}',
     },
     footer: {
       note: 'Kogo: Japanese study, a personal project.',

@@ -36,4 +36,4 @@ After meaningful milestones, commit with clear messages so `git revert` or reset
 
 ## Copy and i18n
 
-Default UI language is **Chinese** (`zh-CN` on `<html>`); **English** is optional. Users switch via the header control; preference is stored as `xiaowu_locale` in `localStorage`. All strings live in `src/i18n/messages.ts`.
+All strings live in `src/i18n/messages.ts`. Optional **store links** for the Kogo detail page: set `VITE_KOGO_IOS_URL`, `VITE_KOGO_ANDROID_URL`, and optionally `VITE_KOGO_APP_VERSION` in `.env` (see `.env.example`). When unset, iOS/Android buttons still open the generic App Store and Play home pages; set full listing URLs for one-tap installs.
