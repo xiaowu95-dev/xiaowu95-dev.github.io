@@ -3,6 +3,7 @@ import { ArrowUpRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { SiteFooter } from '@/components/SiteFooter'
 import { SiteHeader } from '@/components/SiteHeader'
+import { useI18n } from '@/i18n/useI18n'
 
 const stagger = {
   hidden: {},
@@ -20,31 +21,15 @@ const rise = {
   },
 }
 
-const apps = [
-  {
-    slug: '/app/jlpt',
-    title: 'JLPT: Japanese Mastery',
-    subtitle: 'SRS, exams, and a calm study rhythm.',
-    badge: 'Flagship',
-    featured: true,
-  },
-  {
-    slug: '#',
-    title: 'Kanji Trace Lab',
-    subtitle: 'Handwriting drills with pressure-aware strokes.',
-    badge: 'In lab',
-    featured: false,
-  },
-  {
-    slug: '#',
-    title: 'Listening Lounge',
-    subtitle: 'Curated audio paths for N3–N1.',
-    badge: 'Soon',
-    featured: false,
-  },
+const appDefs = [
+  { id: 'jlpt' as const, slug: '/app/jlpt', featured: true },
+  { id: 'kanji' as const, slug: '#', featured: false },
+  { id: 'listening' as const, slug: '#', featured: false },
 ]
 
 export default function Home() {
+  const { t } = useI18n()
+
   return (
     <div className="gold-ambient flex min-h-screen flex-col">
       <SiteHeader />
@@ -57,14 +42,13 @@ export default function Home() {
             className="max-w-2xl"
           >
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-gold-500/90">
-              Portfolio
+              {t('home.portfolioLabel')}
             </p>
             <h1 className="mt-5 font-display text-4xl font-semibold leading-[1.12] text-[color:oklch(0.95_0.015_85)] sm:text-5xl">
-              Apps built for deliberate Japanese study.
+              {t('home.heroTitle')}
             </h1>
             <p className="mt-5 max-w-readable text-base leading-relaxed text-gray-400">
-              A quiet grid of tools I design and ship. Each keeps complexity low, respects your time,
-              and leans into craft over noise.
+              {t('home.heroBody')}
             </p>
           </motion.div>
 
@@ -74,27 +58,31 @@ export default function Home() {
             animate="show"
             className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
           >
-            {apps.map((app) => {
+            {appDefs.map((app) => {
+              const title = t(`apps.${app.id}.title`)
+              const subtitle = t(`apps.${app.id}.subtitle`)
+              const badge = t(`apps.${app.id}.badge`)
+
               const CardInner = (
                 <>
                   <div className="flex items-start justify-between gap-4">
                     <div>
                       <p className="text-xs font-medium uppercase tracking-[0.2em] text-gold-500/85">
-                        {app.badge}
+                        {badge}
                       </p>
                       <h2 className="mt-3 font-display text-2xl text-[color:oklch(0.94_0.015_85)]">
-                        {app.title}
+                        {title}
                       </h2>
                     </div>
                     {app.featured ? (
                       <span className="rounded-full border border-gold-500/35 bg-black/30 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide text-gold-400">
-                        View
+                        {t('home.cardView')}
                       </span>
                     ) : null}
                   </div>
-                  <p className="mt-4 text-sm leading-relaxed text-gray-500">{app.subtitle}</p>
+                  <p className="mt-4 text-sm leading-relaxed text-gray-500">{subtitle}</p>
                   <div className="mt-8 flex items-center gap-2 text-sm font-medium text-gold-500">
-                    <span>{app.slug === '#' ? 'Stay tuned' : 'Open detail'}</span>
+                    <span>{app.slug === '#' ? t('home.cardStayTuned') : t('home.cardOpenDetail')}</span>
                     <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} aria-hidden />
                   </div>
                 </>
@@ -105,14 +93,14 @@ export default function Home() {
 
               if (app.slug === '#') {
                 return (
-                  <motion.li key={app.title} variants={rise} className="h-full">
+                  <motion.li key={app.id} variants={rise} className="h-full">
                     <div className={`${cardClass} pointer-events-none opacity-75`}>{CardInner}</div>
                   </motion.li>
                 )
               }
 
               return (
-                <motion.li key={app.title} variants={rise} className="h-full">
+                <motion.li key={app.id} variants={rise} className="h-full">
                   <Link to={app.slug} className={cardClass}>
                     {CardInner}
                   </Link>
@@ -132,13 +120,9 @@ export default function Home() {
               className="max-w-readable"
             >
               <h2 className="font-display text-2xl text-[color:oklch(0.94_0.015_85)] sm:text-3xl">
-                About
+                {t('home.aboutTitle')}
               </h2>
-              <p className="mt-4 text-gray-400 leading-relaxed">
-                I build study products that feel like a good edition on a shelf: confident typography,
-                generous space, and no clutter. Replace this copy with your bio, awards, or contact
-                preferences.
-              </p>
+              <p className="mt-4 text-gray-400 leading-relaxed">{t('home.aboutBody')}</p>
             </motion.div>
           </div>
         </section>

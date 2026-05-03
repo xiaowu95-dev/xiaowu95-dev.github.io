@@ -36,4 +36,4 @@ After meaningful milestones, commit with clear messages so `git revert` or reset
 
 ## Copy and i18n
 
-Primary marketing copy is English per current brief; product name may include Japanese where appropriate on the JLPT page.
+Default UI language is **Chinese** (`zh-CN` on `<html>`); **English** is optional. Users switch via the header control; preference is stored as `xiaowu_locale` in `localStorage`. All strings live in `src/i18n/messages.ts`.

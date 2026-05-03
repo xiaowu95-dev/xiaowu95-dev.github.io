@@ -1,36 +1,59 @@
 import { motion } from 'framer-motion'
 import { Brain, Crown, Library, Timer } from 'lucide-react'
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { PhoneMockup } from '@/components/PhoneMockup'
 import { SiteFooter } from '@/components/SiteFooter'
 import { SiteHeader } from '@/components/SiteHeader'
+import { useI18n } from '@/i18n/useI18n'
+import { getMessage } from '@/i18n/messages'
 
-const features = [
-  {
-    title: 'Intelligent forgetting curve',
-    body: 'Scheduling that respects how your memory actually ages across JLPT levels.',
-    icon: Brain,
-  },
-  {
-    title: 'Past papers, present focus',
-    body: 'Full-length exam shells with timing, so the room feels familiar before test day.',
-    icon: Library,
-  },
-  {
-    title: 'Black-gold immersion',
-    body: 'A dim, calm interface that keeps evenings soft when you study late.',
-    icon: Crown,
-  },
-  {
-    title: 'Rhythm-aware sessions',
-    body: 'Short bursts or deep runs; timers stay out of the way until you need them.',
-    icon: Timer,
-  },
+const featureDefs = [
+  { id: 'forget' as const, icon: Brain },
+  { id: 'exam' as const, icon: Library },
+  { id: 'ui' as const, icon: Crown },
+  { id: 'time' as const, icon: Timer },
 ]
+
+const FEATURE_KEYS: Record<(typeof featureDefs)[number]['id'], readonly [string, string]> = {
+  forget: ['jlpt.featureForgetTitle', 'jlpt.featureForgetBody'],
+  exam: ['jlpt.featureExamTitle', 'jlpt.featureExamBody'],
+  ui: ['jlpt.featureUiTitle', 'jlpt.featureUiBody'],
+  time: ['jlpt.featureTimeTitle', 'jlpt.featureTimeBody'],
+}
 
 const sectionEase = [0.22, 1, 0.36, 1] as const
 
+function HeroProductName() {
+  const { locale } = useI18n()
+  const latin = 'Yukō'
+  const kanji = '優光'
+
+  if (locale === 'zh') {
+    return (
+      <>
+        <span className="text-gold-500">{kanji}</span> {latin}
+      </>
+    )
+  }
+
+  return (
+    <>
+      {latin} <span className="text-gold-500">{kanji}</span>
+    </>
+  )
+}
+
 export default function AppDetail() {
+  const { locale, t } = useI18n()
+
+  useEffect(() => {
+    document.title = t('jlpt.pageTitle')
+    return () => {
+      document.title = getMessage(locale, 'documentTitle')
+    }
+  }, [locale, t])
+
   return (
     <div className="gold-ambient flex min-h-screen flex-col">
       <SiteHeader />
@@ -43,7 +66,7 @@ export default function AppDetail() {
             className="text-sm text-gray-500"
           >
             <Link to="/" className="text-gold-500/90 transition-colors hover:text-gold-400">
-              ← All apps
+              {t('jlpt.back')}
             </Link>
           </motion.p>
 
@@ -55,7 +78,7 @@ export default function AppDetail() {
                 transition={{ duration: 0.5, ease: sectionEase, delay: 0.05 }}
                 className="text-xs font-semibold uppercase tracking-[0.3em] text-gold-500/90"
               >
-                JLPT / N5–N1
+                {t('jlpt.rangeTag')}
               </motion.p>
               <motion.h1
                 initial={{ opacity: 0, y: 18 }}
@@ -63,7 +86,7 @@ export default function AppDetail() {
                 transition={{ duration: 0.6, ease: sectionEase, delay: 0.1 }}
                 className="mt-5 font-display text-4xl font-semibold leading-[1.08] text-[color:oklch(0.95_0.015_85)] sm:text-5xl lg:text-[3.15rem]"
               >
-                Yukō <span className="text-gold-500">優光</span>
+                <HeroProductName />
               </motion.h1>
               <motion.p
                 initial={{ opacity: 0, y: 18 }}
@@ -71,8 +94,7 @@ export default function AppDetail() {
                 transition={{ duration: 0.6, ease: sectionEase, delay: 0.16 }}
                 className="mt-5 max-w-readable text-lg leading-relaxed text-gray-400 sm:text-xl"
               >
-                Master JLPT with elegance. One composed session after another, backed by structure you
-                can trust.
+                {t('jlpt.heroLead')}
               </motion.p>
 
               <motion.div
@@ -114,20 +136,19 @@ export default function AppDetail() {
               className="max-w-xl"
             >
               <h2 className="font-display text-2xl text-[color:oklch(0.94_0.015_85)] sm:text-3xl">
-                Built around four quiet promises
+                {t('jlpt.featuresHeading')}
               </h2>
-              <p className="mt-4 text-gray-400 leading-relaxed">
-                Each pillar keeps the product honest: memory science, exam fidelity, atmosphere, and
-                time kept sacred.
-              </p>
+              <p className="mt-4 text-gray-400 leading-relaxed">{t('jlpt.featuresSub')}</p>
             </motion.div>
 
             <div className="mt-14 grid gap-8 sm:grid-cols-2">
-              {features.map((f, i) => {
+              {featureDefs.map((f, i) => {
                 const Icon = f.icon
+                const [titleKey, bodyKey] = FEATURE_KEYS[f.id]
+
                 return (
                   <motion.article
-                    key={f.title}
+                    key={f.id}
                     initial={{ opacity: 0, y: 22 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.35 }}
@@ -138,9 +159,9 @@ export default function AppDetail() {
                       <Icon className="h-5 w-5" strokeWidth={1.35} aria-hidden />
                     </div>
                     <h3 className="mt-6 font-display text-xl text-[color:oklch(0.94_0.015_85)]">
-                      {f.title}
+                      {t(titleKey)}
                     </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-gray-500">{f.body}</p>
+                    <p className="mt-3 text-sm leading-relaxed text-gray-500">{t(bodyKey)}</p>
                   </motion.article>
                 )
               })}

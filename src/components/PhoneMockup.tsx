@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { useI18n } from '@/i18n/useI18n'
 
 type PhoneMockupProps = {
   className?: string
@@ -8,6 +9,8 @@ type PhoneMockupProps = {
  * Floating phone frame with placeholder screen and gold-trimmed bezel.
  */
 export function PhoneMockup({ className = '' }: PhoneMockupProps) {
+  const { t } = useI18n()
+
   return (
     <motion.div
       className={['relative mx-auto w-[min(100%,280px)]', className].join(' ')}
@@ -31,11 +34,9 @@ export function PhoneMockup({ className = '' }: PhoneMockupProps) {
           <div className="relative aspect-[9/19] bg-[#0c0c0c]">
             <div className="absolute inset-4 rounded-2xl border border-gold-500/25 bg-gradient-to-br from-surface to-surface-deep" />
             <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 px-8 text-center">
-              <p className="font-display text-lg text-[color:oklch(0.93_0.02_85)]">JLPT</p>
-              <p className="text-xs uppercase tracking-[0.2em] text-gold-500/90">Screenshot placeholder</p>
-              <p className="text-[11px] leading-relaxed text-gray-500">
-                Replace with your App Store preview or in-app capture.
-              </p>
+              <p className="font-display text-lg text-[color:oklch(0.93_0.02_85)]">{t('phone.jlptLabel')}</p>
+              <p className="text-xs uppercase tracking-[0.2em] text-gold-500/90">{t('phone.placeholder')}</p>
+              <p className="text-[11px] leading-relaxed text-gray-500">{t('phone.hint')}</p>
             </div>
           </div>
         </div>
