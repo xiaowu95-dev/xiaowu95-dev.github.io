@@ -1,0 +1,45 @@
+@import 'tailwindcss';
+
+@config '../tailwind.config.ts';
+
+/* Matte stack: warm ink, not pure black */
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: theme('fontFamily.sans');
+  background-color: theme('colors.surface.deep');
+  color: theme('colors.gray.300');
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Ambient gold wash (very low contrast) */
+.gold-ambient::before {
+  content: '';
+  position: fixed;
+  inset: -20% -10% auto -10%;
+  height: 55vh;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 70% 60% at 50% 0%,
+    color-mix(in oklch, #d4af37 12%, transparent) 0%,
+    transparent 70%
+  );
+  z-index: 0;
+}
+
+.gold-ambient > * {
+  position: relative;
+  z-index: 1;
+}
