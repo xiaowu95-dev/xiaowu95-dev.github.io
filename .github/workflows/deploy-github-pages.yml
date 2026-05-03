@@ -34,9 +34,6 @@ jobs:
         run: npm ci
 
       - name: Build
-        env:
-          # Project site: /repo-name/ — User site (repo "<owner>.github.io"): /
-          VITE_BASE: ${{ github.event.repository.name == format('{0}.github.io', github.repository_owner) && '/' || format('/{0}/', github.event.repository.name) }}
         run: npm run build
 
       - uses: actions/upload-pages-artifact@v3
