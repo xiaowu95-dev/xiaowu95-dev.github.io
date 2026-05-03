@@ -31,29 +31,29 @@ export default function Home() {
       <SiteHeader />
       <main className="flex-1">
         <section className="mx-auto max-w-6xl px-6 pb-16 pt-16 sm:px-8 sm:pt-20">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="max-w-2xl"
-          >
-            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-gold-500/90">
-              {t('home.portfolioLabel')}
-            </p>
-            <h1 className="mt-5 font-display text-4xl font-semibold leading-[1.12] text-[color:oklch(0.95_0.015_85)] sm:text-5xl">
-              {t('home.heroTitle')}
-            </h1>
-            <p className="mt-5 max-w-readable text-base leading-relaxed text-gray-400">
-              {t('home.heroBody')}
-            </p>
-          </motion.div>
+          <div className="max-w-2xl">
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-gold-500/90">
+                {t('home.portfolioLabel')}
+              </p>
+              <h1 className="mt-5 font-display text-4xl font-semibold leading-[1.12] text-[color:oklch(0.95_0.015_85)] sm:text-5xl">
+                {t('home.heroTitle')}
+              </h1>
+              <p className="mt-5 max-w-readable text-base leading-relaxed text-gray-400">
+                {t('home.heroBody')}
+              </p>
+            </motion.div>
 
-          <motion.ul
-            variants={stagger}
-            initial="hidden"
-            animate="show"
-            className="mx-auto mt-14 grid max-w-xl gap-6"
-          >
+            <motion.ul
+              variants={stagger}
+              initial="hidden"
+              animate="show"
+              className="mt-14 grid w-full gap-6"
+            >
             {appDefs.map((app) => {
               const title = t(`apps.${app.id}.title`)
               const subtitle = t(`apps.${app.id}.subtitle`)
@@ -103,7 +103,8 @@ export default function Home() {
                 </motion.li>
               )
             })}
-          </motion.ul>
+            </motion.ul>
+          </div>
         </section>
 
         <section id="about" className="border-t border-white/[0.05] bg-black/20 py-20">
@@ -113,7 +114,7 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-10%' }}
               transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-              className="max-w-readable"
+              className="max-w-2xl"
             >
               <h2 className="font-display text-2xl text-[color:oklch(0.94_0.015_85)] sm:text-3xl">
                 {t('home.aboutTitle')}

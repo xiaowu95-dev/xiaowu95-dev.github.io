@@ -36,9 +36,9 @@ export const messages = {
     },
     home: {
       portfolioLabel: '作品集',
-      heroTitle: '目前我只维护一款作品：Kogo。',
+      heroTitle: 'Kogo（コゴ）',
       heroBody:
-        'Kogo 把教材式学习、间隔复习和 JLPT 练习与模考串在一条路径里，面向「每天能推进一点」的人。下面是产品与我的简单介绍。',
+        '来自「小五」→ Kogo（自然映射）。教材式学习、间隔复习与 JLPT 练习在同一路径里，适合每天稳步向前的人。下面是产品与我的简短说明。',
       aboutTitle: '关于我',
       aboutBody:
         '我是一名普通开发人员，工作之余写代码、做一点小产品。Kogo 是我在打磨的日语学习应用，欢迎试用和反馈。',
@@ -48,17 +48,20 @@ export const messages = {
     },
     apps: {
       kogo: {
-        title: 'Kogo',
-        subtitle: '教材节奏、记忆复习、JLPT 练习与模考，在一款应用里完成。',
+        title: 'Kogo（コゴ）',
+        subtitle: '学日语，一步一步向前：教材节奏、记忆复习、JLPT 练习与模考，在同一款应用里。',
         badge: '进行中',
       },
     },
     kogo: {
-      pageTitle: 'Kogo · 日语学习',
+      pageTitle: 'Kogo（コゴ）· 日语学习',
       back: '← 返回首页',
       rangeTag: 'JLPT · 教材 · 复习',
-      heroLead:
-        '跟着课时往前走，复习队列替你记住遗忘曲线；需要冲刺时，还有专项练习和整套模考。界面克制，把注意力留给语言本身。',
+      heroName: 'Kogo（コゴ）',
+      nameEtymology: '来自「小五」→ Kogo（自然映射）',
+      sloganMain: 'Learn Japanese, step by step.',
+      sloganSub: 'Your daily path to JLPT mastery.',
+      sloganHint: '我们强调日积月累的节奏，而不是一夜速成的承诺。',
       featuresHeading: '为真实学习流程做的四件事',
       featuresSub:
         '功能来自我实际在写的应用：学习、练习、记忆、模考共用同一套内容与进度。',
@@ -80,11 +83,10 @@ export const messages = {
       storeAndroidVersion: '最新版本：{{v}}',
     },
     footer: {
-      note: 'Kogo 日语学习，个人作品。',
-      emailLabel: '邮件',
+      copyrightLine: '© Copyright 2021, All Rights Reserved by Xiaowu Dev',
     },
     phone: {
-      appLabel: 'Kogo',
+      appLabel: 'Kogo（コゴ）',
       placeholder: '截图占位',
       hint: '可替换为 App Store 预览或应用内截图。',
     },
@@ -102,9 +104,9 @@ export const messages = {
     },
     home: {
       portfolioLabel: 'Portfolio',
-      heroTitle: 'Right now I ship one product: Kogo.',
+      heroTitle: 'Kogo（コゴ）',
       heroBody:
-        'Kogo connects textbook-style lessons, spaced review, and JLPT drills plus full mock exams in one flow, for people who want steady daily progress. Below is the product and a short note about me.',
+        'From Xiaowu (小五) to Kogo: a natural mapping. Textbook-style lessons, spaced review, and JLPT drills share one path for people who want steady daily progress. Below is the product and a short note about me.',
       aboutTitle: 'About',
       aboutBody:
         'I am a regular developer. I write code and side projects after work. Kogo is the Japanese study app I am building and polishing, feedback is welcome.',
@@ -114,17 +116,21 @@ export const messages = {
     },
     apps: {
       kogo: {
-        title: 'Kogo',
-        subtitle: 'Lessons, memory reviews, JLPT practice, and mocks in one app.',
+        title: 'Kogo（コゴ）',
+        subtitle:
+          'Learn Japanese step by step: lessons, memory reviews, JLPT practice, and full mocks in one app.',
         badge: 'Active',
       },
     },
     kogo: {
-      pageTitle: 'Kogo · Japanese study',
+      pageTitle: 'Kogo（コゴ）· Japanese study',
       back: '← Home',
       rangeTag: 'JLPT · Course · Review',
-      heroLead:
-        'Follow structured lessons, let the review queue handle forgetting, and reach for section drills or full mocks when you need exam fidelity. Calm UI, attention on the language.',
+      heroName: 'Kogo（コゴ）',
+      nameEtymology: 'From Xiaowu (小五) to Kogo: a natural mapping.',
+      sloganMain: 'Learn Japanese, step by step.',
+      sloganSub: 'Your daily path to JLPT mastery.',
+      sloganHint: 'We emphasize steady, daily progress, not overnight promises.',
       featuresHeading: 'Four things built around real study loops',
       featuresSub:
         'These match the app I am building: learn, practice, review, and mock exams share one content layer.',
@@ -146,11 +152,10 @@ export const messages = {
       storeAndroidVersion: 'Latest version: {{v}}',
     },
     footer: {
-      note: 'Kogo: Japanese study, a personal project.',
-      emailLabel: 'Email',
+      copyrightLine: '© Copyright 2021, All Rights Reserved by Xiaowu Dev',
     },
     phone: {
-      appLabel: 'Kogo',
+      appLabel: 'Kogo（コゴ）',
       placeholder: 'Screenshot placeholder',
       hint: 'Swap in an App Store preview or in-app capture.',
     },

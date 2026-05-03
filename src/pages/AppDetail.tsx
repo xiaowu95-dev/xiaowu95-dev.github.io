@@ -74,21 +74,45 @@ export default function AppDetail() {
                 transition={{ duration: 0.6, ease: sectionEase, delay: 0.1 }}
                 className="mt-5 font-display text-4xl font-semibold leading-[1.08] text-[color:oklch(0.95_0.015_85)] sm:text-5xl lg:text-[3.15rem]"
               >
-                Kogo
+                {t('kogo.heroName')}
               </motion.h1>
               <motion.p
                 initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: sectionEase, delay: 0.16 }}
-                className="mt-5 max-w-readable text-lg leading-relaxed text-gray-400 sm:text-xl"
+                transition={{ duration: 0.6, ease: sectionEase, delay: 0.13 }}
+                className="mt-3 max-w-readable text-sm leading-relaxed text-gray-500 sm:text-base"
               >
-                {t('kogo.heroLead')}
+                {t('kogo.nameEtymology')}
+              </motion.p>
+              <motion.p
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: sectionEase, delay: 0.16 }}
+                className="mt-8 max-w-readable font-display text-xl font-medium leading-snug text-[color:oklch(0.94_0.02_85)] sm:text-2xl"
+              >
+                {t('kogo.sloganMain')}
+              </motion.p>
+              <motion.p
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: sectionEase, delay: 0.19 }}
+                className="mt-2 max-w-readable text-base leading-relaxed text-gold-500/95 sm:text-lg"
+              >
+                {t('kogo.sloganSub')}
+              </motion.p>
+              <motion.p
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: sectionEase, delay: 0.22 }}
+                className="mt-4 max-w-readable text-sm leading-relaxed text-gray-500"
+              >
+                {t('kogo.sloganHint')}
               </motion.p>
 
               <motion.div
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.55, ease: sectionEase, delay: 0.22 }}
+                transition={{ duration: 0.55, ease: sectionEase, delay: 0.28 }}
                 className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-stretch"
               >
                 <a
