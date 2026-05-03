@@ -88,6 +88,8 @@ export const messages = {
       appLabel: 'Kogo（コゴ）',
       placeholder: '截图占位',
       hint: '可替换为 App Store 预览或应用内截图。',
+      carouselPrev: '上一张截图',
+      carouselNext: '下一张截图',
     },
   },
   en: {
@@ -156,6 +158,8 @@ export const messages = {
       appLabel: 'Kogo（コゴ）',
       placeholder: 'Screenshot placeholder',
       hint: 'Swap in an App Store preview or in-app capture.',
+      carouselPrev: 'Previous screenshot',
+      carouselNext: 'Next screenshot',
     },
   },
 } as const satisfies Record<Locale, Record<string, unknown>>
