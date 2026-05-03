@@ -18,6 +18,11 @@ Static React portfolio centered on **Kogo**, a Japanese study app (lessons, spac
 - **GitHub Pages** expects the production bundle under the repo’s Pages root.
 - **Vite `base`:** default in `vite.config.ts` is `/xiaowu_dev/` (match your GitHub repo name). For a user site (`username.github.io`), set `base: '/'`. You can override with env `VITE_BASE` at build time.
 
+## Local dev and preview
+
+- **`npm run dev`** uses `vite --base /`, so open **http://localhost:5173/** (no `/xiaowu_dev/` prefix). Production `base` is unchanged for builds.
+- **`npm run preview`** uses the real production base (e.g. `/xiaowu_dev/`). Open **http://localhost:4173/xiaowu_dev/** or just **http://localhost:4173/**; the preview server redirects `/` and `/xiaowu_dev` to `/xiaowu_dev/` so you avoid the Vite “did you mean…” error.
+
 ## Routes
 
 | Path | Page |
