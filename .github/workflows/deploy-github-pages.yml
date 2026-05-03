@@ -45,8 +45,10 @@ jobs:
             echo "::error::dist/index.html still references /src/ (dev entry). Pages would load .tsx as the wrong MIME type."
             exit 1
           fi
-          if ! grep -qE 'src="[^"]+/assets/[^"]+\.js"' dist/index.html; then
-            echo "::error::dist/index.html has no hashed /assets/*.js bundle."
+          # Matches /repo/assets/*.js (project site) and /assets/*.js (user.github.io, base /)
+          if ! grep -qE 'src="[^"]*assets/[^"]+\.js"' dist/index.html \
+            && ! grep -qE "src='[^']*assets/[^']+\\.js'" dist/index.html; then
+            echo "::error::dist/index.html has no Vite /assets/*.js entry script."
             exit 1
           fi
 
