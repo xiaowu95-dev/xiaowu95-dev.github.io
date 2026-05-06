@@ -41,7 +41,7 @@ export const messages = {
         '教材式学习、间隔复习与 JLPT 练习在同一路径里，适合每天稳步向前的人。',
       aboutTitle: '关于我',
       aboutBody:
-        '我是一名程序员，工作之余写代码、做一点小产品。Kogo 是我在打磨的日语学习应用，欢迎试用和反馈。',
+        '我是一名普通的程序员，工作之余写代码、做一点小产品。Kogo 是我在打磨的日语学习应用，欢迎试用和反馈。',
       cardView: '查看',
       cardOpenDetail: '了解 Kogo',
       cardStayTuned: '敬请期待',
