@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef } from 'react'
+import { useCanvasVisibility } from './useCanvasVisibility'
 
 interface Particle {
   x: number
@@ -26,9 +27,8 @@ export default function FloatingParticles({
   speed = 0.3,
   className = '',
 }: FloatingParticlesProps) {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const { canvasRef, visibleRef, scheduleFrame, cancelFrame } = useCanvasVisibility()
   const particlesRef = useRef<Particle[]>([])
-  const rafRef = useRef<number>(0)
 
   const spawnParticle = useCallback(
     (width: number, height: number, fromTop = true): Particle => ({
@@ -71,59 +71,64 @@ export default function FloatingParticles({
     )
 
     const draw = () => {
+      if (!visibleRef.current) {
+        scheduleFrame(draw)
+        return
+      }
+
       const { width, height } = canvas.getBoundingClientRect()
       ctx.clearRect(0, 0, width, height)
 
-      particlesRef.current = particlesRef.current.map((p) => {
-        let particle = { ...p }
-        particle.x += particle.vx
-        particle.y += particle.vy
-        particle.rotation += particle.rotationSpeed
-        particle.life++
+      const particles = particlesRef.current
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i]
+        p.x += p.vx
+        p.y += p.vy
+        p.rotation += p.rotationSpeed
+        p.life++
 
         // Gentle sway
-        particle.vx += Math.sin(particle.life * 0.01) * 0.003
+        p.vx += Math.sin(p.life * 0.01) * 0.003
 
         // Fade in/out
-        const fadeIn = Math.min(particle.life / 30, 1)
-        const fadeOut = Math.max(1 - (particle.life - particle.maxLife + 50) / 50, 0)
-        const alpha = particle.opacity * fadeIn * (particle.life > particle.maxLife - 50 ? fadeOut : 1)
+        const fadeIn = Math.min(p.life / 30, 1)
+        const fadeOut = Math.max(1 - (p.life - p.maxLife + 50) / 50, 0)
+        const alpha = p.opacity * fadeIn * (p.life > p.maxLife - 50 ? fadeOut : 1) // prettier-ignore
 
-        if (particle.life > particle.maxLife || particle.y > height + 20) {
-          particle = spawnParticle(width, height, true)
+        if (p.life > p.maxLife || p.y > height + 20) {
+          Object.assign(p, spawnParticle(width, height, true))
         }
 
         ctx.save()
-        ctx.translate(particle.x, particle.y)
-        ctx.rotate(particle.rotation)
+        ctx.translate(p.x, p.y)
+        ctx.rotate(p.rotation)
         ctx.globalAlpha = alpha
         ctx.fillStyle = color
         ctx.beginPath()
 
         // Draw a soft circle (petal-like)
-        ctx.ellipse(0, 0, particle.size, particle.size * 0.6, 0, 0, Math.PI * 2)
+        ctx.ellipse(0, 0, p.size, p.size * 0.6, 0, 0, Math.PI * 2)
         ctx.fill()
 
         // Glow
         ctx.globalAlpha = alpha * 0.3
         ctx.beginPath()
-        ctx.ellipse(0, 0, particle.size * 2.5, particle.size * 1.5, 0, 0, Math.PI * 2)
+        ctx.ellipse(0, 0, p.size * 2.5, p.size * 1.5, 0, 0, Math.PI * 2)
         ctx.fill()
 
         ctx.restore()
-        return particle
-      })
+      }
 
-      rafRef.current = requestAnimationFrame(draw)
+      scheduleFrame(draw)
     }
 
-    rafRef.current = requestAnimationFrame(draw)
+    scheduleFrame(draw)
 
     return () => {
       window.removeEventListener('resize', resize)
-      cancelAnimationFrame(rafRef.current)
+      cancelFrame()
     }
-  }, [count, color, spawnParticle])
+  }, [count, color, spawnParticle, canvasRef, visibleRef, scheduleFrame, cancelFrame])
 
   return (
     <canvas

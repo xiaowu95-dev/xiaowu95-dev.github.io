@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import gsap from 'gsap'
 import FloatingParticles from '../components/FloatingParticles'
 import FilmGrain from '../components/FilmGrain'
+import { useGsapVisibilityPause } from '../components/useGsapVisibilityPause'
 
 /* ────────────────────────────────────────────────────────────
    OpeningPrologue — Cinematic Invitation Envelope
@@ -705,6 +706,8 @@ export default function OpeningPrologue({
   useEffect(() => {
     onContentReady?.()
   }, [onContentReady])
+
+  useGsapVisibilityPause()
 
   const handleEnvelopeClick = useCallback(() => {
     setPhase('opening')

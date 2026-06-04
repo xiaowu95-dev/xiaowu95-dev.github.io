@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef } from 'react'
+import { useCanvasVisibility } from './useCanvasVisibility'
 
 interface Star {
   x: number
@@ -7,6 +8,7 @@ interface Star {
   opacity: number
   twinkleSpeed: number
   twinkleOffset: number
+  warmth: string
 }
 
 interface StarFieldProps {
@@ -15,9 +17,8 @@ interface StarFieldProps {
 }
 
 export default function StarField({ count = 180, className = '' }: StarFieldProps) {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const { canvasRef, visibleRef, scheduleFrame, cancelFrame } = useCanvasVisibility()
   const starsRef = useRef<Star[]>([])
-  const rafRef = useRef<number>(0)
 
   const initStars = useCallback(
     (width: number, height: number) => {
@@ -28,6 +29,7 @@ export default function StarField({ count = 180, className = '' }: StarFieldProp
         opacity: Math.random() * 0.6 + 0.2,
         twinkleSpeed: Math.random() * 0.008 + 0.003,
         twinkleOffset: Math.random() * Math.PI * 2,
+        warmth: Math.random() > 0.7 ? 'oklch(0.9 0.04 85)' : 'oklch(0.88 0.02 260)',
       }))
     },
     [count],
@@ -54,6 +56,11 @@ export default function StarField({ count = 180, className = '' }: StarFieldProp
 
     let time = 0
     const draw = () => {
+      if (!visibleRef.current) {
+        scheduleFrame(draw)
+        return
+      }
+
       const rect = canvas.getBoundingClientRect()
       ctx.clearRect(0, 0, rect.width, rect.height)
 
@@ -62,11 +69,9 @@ export default function StarField({ count = 180, className = '' }: StarFieldProp
         const alpha = star.opacity * (0.4 + twinkle * 0.6)
         const r = star.size * (0.8 + twinkle * 0.2)
 
-        // Warm-tinted star (slight gold/cream tint, not pure white)
-        const warmth = Math.random() > 0.7 ? 'oklch(0.9 0.04 85)' : 'oklch(0.88 0.02 260)'
         ctx.beginPath()
         ctx.arc(star.x, star.y, r, 0, Math.PI * 2)
-        ctx.fillStyle = warmth
+        ctx.fillStyle = star.warmth
         ctx.globalAlpha = alpha
         ctx.fill()
 
@@ -74,23 +79,23 @@ export default function StarField({ count = 180, className = '' }: StarFieldProp
         if (star.size > 1.2) {
           ctx.beginPath()
           ctx.arc(star.x, star.y, r * 3, 0, Math.PI * 2)
-          ctx.fillStyle = warmth
+          ctx.fillStyle = star.warmth
           ctx.globalAlpha = alpha * 0.08
           ctx.fill()
         }
       }
       ctx.globalAlpha = 1
       time++
-      rafRef.current = requestAnimationFrame(draw)
+      scheduleFrame(draw)
     }
 
-    rafRef.current = requestAnimationFrame(draw)
+    scheduleFrame(draw)
 
     return () => {
       window.removeEventListener('resize', resize)
-      cancelAnimationFrame(rafRef.current)
+      cancelFrame()
     }
-  }, [initStars])
+  }, [initStars, scheduleFrame, cancelFrame, visibleRef])
 
   return (
     <canvas

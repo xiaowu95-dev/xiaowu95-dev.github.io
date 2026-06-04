@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { useRef, useState, useEffect, useMemo } from 'react'
 import gsap from 'gsap'
+import { useGsapVisibilityPause } from '../components/useGsapVisibilityPause'
 
 interface FallingInLoveProps {
   onNext: () => void
@@ -511,6 +512,7 @@ const FRAGMENTS: FragmentDef[] = [
    "我开始期待见到你。"
    ═══════════════════════════════════════════════════════ */
 export default function FallingInLove({ onNext }: FallingInLoveProps) {
+  useGsapVisibilityPause()
   const [layer1, setLayer1] = useState(false)
   const [layer2, setLayer2] = useState(false)
   const [layer2Text, setLayer2Text] = useState(false)

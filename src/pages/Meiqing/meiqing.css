@@ -107,6 +107,10 @@
   animation: grain-drift 0.5s steps(1) infinite;
 }
 
+.meqing-grain--paused::after {
+  animation-play-state: paused;
+}
+
 @keyframes grain-drift {
   0% { transform: translate(0, 0); }
   10% { transform: translate(-5%, -10%); }

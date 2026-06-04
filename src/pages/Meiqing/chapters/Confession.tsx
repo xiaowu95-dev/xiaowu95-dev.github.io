@@ -3,6 +3,7 @@ import { useRef, useState, useEffect } from 'react'
 import gsap from 'gsap'
 import StarField from '../components/StarField'
 import FloatingParticles from '../components/FloatingParticles'
+import { useGsapVisibilityPause } from '../components/useGsapVisibilityPause'
 
 interface ConfessionProps {
   onNext: () => void
@@ -55,6 +56,8 @@ export default function Confession({ onContentReady }: ConfessionProps) {
   const cardRef = useRef<HTMLDivElement>(null)
   const shimmerRef = useRef<HTMLDivElement>(null)
   const hasScrolled = useRef(false)
+
+  useGsapVisibilityPause()
 
   /* track manual scroll */
   useEffect(() => {

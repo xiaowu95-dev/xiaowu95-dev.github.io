@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef } from 'react'
+import { useCanvasVisibility } from './useCanvasVisibility'
 
 interface FireworkParticle {
   x: number
@@ -51,9 +52,8 @@ function createExplosion(x: number, y: number, hue: number): FireworkParticle[] 
 }
 
 export default function Fireworks({ active = false, className = '' }: FireworksProps) {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const { canvasRef, visibleRef, scheduleFrame, cancelFrame } = useCanvasVisibility()
   const fireworksRef = useRef<Firework[]>([])
-  const rafRef = useRef<number>(0)
   const frameRef = useRef(0)
 
   const spawnFirework = useCallback((width: number, height: number) => {
@@ -88,8 +88,12 @@ export default function Fireworks({ active = false, className = '' }: FireworksP
     window.addEventListener('resize', resize)
 
     const draw = () => {
+      if (!visibleRef.current) {
+        scheduleFrame(draw)
+        return
+      }
+
       if (!active) {
-        rafRef.current = requestAnimationFrame(draw)
         return
       }
 
@@ -178,16 +182,16 @@ export default function Fireworks({ active = false, className = '' }: FireworksP
         return fw.particles.length > 0
       })
 
-      rafRef.current = requestAnimationFrame(draw)
+      scheduleFrame(draw)
     }
 
-    rafRef.current = requestAnimationFrame(draw)
+    scheduleFrame(draw)
 
     return () => {
       window.removeEventListener('resize', resize)
-      cancelAnimationFrame(rafRef.current)
+      cancelFrame()
     }
-  }, [active, spawnFirework])
+  }, [active, spawnFirework, canvasRef, visibleRef, scheduleFrame, cancelFrame])
 
   return (
     <canvas

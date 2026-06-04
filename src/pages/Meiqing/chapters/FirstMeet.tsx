@@ -1,5 +1,7 @@
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { useRef, useEffect, useState } from 'react'
+import { useCanvasVisibility } from '../components/useCanvasVisibility'
+import { useGsapVisibilityPause } from '../components/useGsapVisibilityPause'
 import { timeline, locations } from '../memories'
 import gsap from 'gsap'
 
@@ -33,7 +35,7 @@ const locationImageMap: Record<string, string> = {
 
 /* ─── Rain Canvas ───────────────────────────────────── */
 function RainCanvas() {
-  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const { canvasRef, visibleRef, scheduleFrame, cancelFrame } = useCanvasVisibility()
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -41,7 +43,6 @@ function RainCanvas() {
     const ctx = canvas.getContext('2d')
     if (!ctx) return
 
-    let animId: number
     const drops: { x: number; y: number; speed: number; len: number; alpha: number }[] = []
 
     const resize = () => {
@@ -62,6 +63,10 @@ function RainCanvas() {
     }
 
     const draw = () => {
+      if (!visibleRef.current) {
+        scheduleFrame(draw)
+        return
+      }
       ctx.clearRect(0, 0, canvas.width, canvas.height)
       for (const d of drops) {
         ctx.beginPath()
@@ -76,12 +81,12 @@ function RainCanvas() {
           d.x = Math.random() * canvas.width
         }
       }
-      animId = requestAnimationFrame(draw)
+      scheduleFrame(draw)
     }
     draw()
 
     return () => {
-      cancelAnimationFrame(animId)
+      cancelFrame()
       window.removeEventListener('resize', resize)
     }
   }, [])
@@ -370,6 +375,8 @@ export default function FirstMeet({ onContentReady }: FirstMeetProps) {
 
   // Content is scroll-driven, ready immediately
   useEffect(() => { onContentReady?.() }, [onContentReady])
+
+  useGsapVisibilityPause()
 
   /* ─── ACT 1: Deep Night ─────────────────────────────── */
   const act1Ref = useRef<HTMLDivElement>(null)
