@@ -6,6 +6,7 @@ import { phoneCarouselImageUrls } from '@/lib/phoneCarouselImages'
 
 type PhoneMockupProps = {
   className?: string
+  images?: string[]
 }
 
 const AUTO_MS = 11_000
@@ -15,9 +16,9 @@ const swipeEase = [0.22, 1, 0.36, 1] as const
  * Floating phone frame with gold-trimmed bezel; screen shows a screenshot carousel
  * when `public/bg*` assets exist, otherwise placeholder copy.
  */
-export function PhoneMockup({ className = '' }: PhoneMockupProps) {
+export function PhoneMockup({ className = '', images }: PhoneMockupProps) {
   const { t } = useI18n()
-  const slides = phoneCarouselImageUrls
+  const slides = images ?? phoneCarouselImageUrls
   const [index, setIndex] = useState(0)
   const count = slides.length
 
