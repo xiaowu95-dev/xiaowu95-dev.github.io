@@ -43,7 +43,7 @@ export const messages = {
       aboutBody:
         '我是一名普通的程序员，工作之余写代码、做一点小产品。Kogo 是我在打磨的日语学习应用，欢迎试用和反馈。',
       cardView: '查看',
-      cardOpenDetail: '了解 Kogo',
+      cardOpenDetail: '了解详情',
       cardStayTuned: '敬请期待',
     },
     apps: {
@@ -53,7 +53,7 @@ export const messages = {
         badge: '进行中',
       },
       timeAge: {
-        title: '时光 Age',
+        title: 'Time Age',
         subtitle: '倒数日与纪念日：双向时间追踪，支持精确到小时、年月日，还能和伙伴共享事件。',
         badge: '进行中',
       },
@@ -145,7 +145,7 @@ export const messages = {
       aboutBody:
         'I am a regular developer. I write code and side projects after work. Kogo is the Japanese study app I am building and polishing, feedback is welcome.',
       cardView: 'View',
-      cardOpenDetail: 'About Kogo',
+      cardOpenDetail: 'Learn more',
       cardStayTuned: 'Stay tuned',
     },
     apps: {
