@@ -21,7 +21,10 @@ const rise = {
   },
 }
 
-const appDefs = [{ id: 'kogo' as const, slug: '/app/kogo', featured: true }]
+const appDefs = [
+  { id: 'kogo' as const, slug: '/app/kogo', featured: true },
+  { id: 'timeAge' as const, slug: '/app/time-age', featured: true },
+]
 
 export default function Home() {
   const { t } = useI18n()
