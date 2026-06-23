@@ -22,3 +22,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# AI / agent tooling
+.codegraph/
+.cursor/
+.omc/
+.opencode/
+.trae/skills/
+openspec/
