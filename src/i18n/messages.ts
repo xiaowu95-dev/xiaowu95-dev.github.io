@@ -52,6 +52,11 @@ export const messages = {
         subtitle: '学日语，一步一步向前：教材节奏、记忆复习、JLPT 练习与模考，在同一款应用里。',
         badge: '进行中',
       },
+      timeAge: {
+        title: '时光 Age',
+        subtitle: '倒数日与纪念日：双向时间追踪，支持精确到小时、年月日，还能和伙伴共享事件。',
+        badge: '进行中',
+      },
     },
     kogo: {
       pageTitle: 'Kogo（コゴ）· 日语学习',
@@ -76,6 +81,34 @@ export const messages = {
       featureRhythmTitle: '日常节奏',
       featureRhythmBody:
         '今日任务、连击与短时节奏练习，适合通勤和睡前的碎片时间，不把学习变成负担。',
+      storeIosTitle: 'iOS 下载',
+      storeIosVersion: '最新版本：{{v}}',
+      storeAndroidTitle: 'Android 下载',
+      storeAndroidVersion: '最新版本：{{v}}',
+    },
+    timeAge: {
+      pageTitle: '时光 Age · 倒数日',
+      back: '← 返回首页',
+      rangeTag: '倒数日 · 纪念日',
+      heroName: '时光 Age',
+      sloganMain: '每一个值得记住的日子，都值得被好好追踪。',
+      sloganSub: '倒数和累计，精确到小时，也不忘分享给在乎的人。',
+      sloganHint: '不是日历，是时间的温度计。',
+      featuresHeading: '四个让时间更有意义的功能',
+      featuresSub:
+        '来自我实际在用的倒数日应用：双向追踪、多精度显示、个性化卡片、群组共享。',
+      feature1Title: '双向时间追踪',
+      feature1Body:
+        '倒数日倒数未来，纪念日累计过往。一个事件，两种视角，随时切换。',
+      feature2Title: '多精度显示',
+      feature2Body:
+        '天数、天+小时、年月日、纯小时——四种精度自由选择，适配不同场景。',
+      feature3Title: '渐变卡片',
+      feature3Body:
+        '每张事件卡片都有专属渐变配色，时间一眼可辨，主页就是你的时间画廊。',
+      feature4Title: '群组共享',
+      feature4Body:
+        '和伙伴共享倒数事件，创建群组、邀请加入，一起期待重要时刻。',
       storeIosTitle: 'iOS 下载',
       storeIosVersion: '最新版本：{{v}}',
       storeAndroidTitle: 'Android 下载',
@@ -122,6 +155,12 @@ export const messages = {
           'Learn Japanese step by step: lessons, memory reviews, JLPT practice, and full mocks in one app.',
         badge: 'Active',
       },
+      timeAge: {
+        title: 'Time Age',
+        subtitle:
+          'Countdown and anniversary tracker with bi-directional time tracking, precision modes, and group sharing.',
+        badge: 'Active',
+      },
     },
     kogo: {
       pageTitle: 'Kogo（コゴ）· Japanese study',
@@ -146,6 +185,34 @@ export const messages = {
       featureRhythmTitle: 'Daily rhythm',
       featureRhythmBody:
         'Today tasks, streaks, and short rhythm sessions for commutes and bedtime fragments without turning study into guilt.',
+      storeIosTitle: 'iOS download',
+      storeIosVersion: 'Latest version: {{v}}',
+      storeAndroidTitle: 'Android download',
+      storeAndroidVersion: 'Latest version: {{v}}',
+    },
+    timeAge: {
+      pageTitle: 'Time Age · Countdown',
+      back: '← Home',
+      rangeTag: 'Countdown · Anniversary',
+      heroName: 'Time Age',
+      sloganMain: 'Every day worth remembering deserves proper tracking.',
+      sloganSub: 'Count down or count up, precise to the hour, and share with those who matter.',
+      sloganHint: 'Not a calendar — a thermometer for time.',
+      featuresHeading: 'Four features that make time more meaningful',
+      featuresSub:
+        'From the countdown app I actually use: bi-directional tracking, multi-precision display, personalized cards, and group sharing.',
+      feature1Title: 'Bi-directional tracking',
+      feature1Body:
+        'Count down to future events, count up from past ones. One event, two perspectives, switch anytime.',
+      feature2Title: 'Precision modes',
+      feature2Body:
+        'Days, days+hours, year/month/day, or pure hours — four precision options for different needs.',
+      feature3Title: 'Gradient cards',
+      feature3Body:
+        'Each event card has its own gradient palette. Time at a glance, your home screen is a time gallery.',
+      feature4Title: 'Group sharing',
+      feature4Body:
+        'Share countdown events with friends. Create groups, invite members, and look forward to moments together.',
       storeIosTitle: 'iOS download',
       storeIosVersion: 'Latest version: {{v}}',
       storeAndroidTitle: 'Android download',
