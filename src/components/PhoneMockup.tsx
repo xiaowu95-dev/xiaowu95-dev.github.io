@@ -7,6 +7,7 @@ import { phoneCarouselImageUrls } from '@/lib/phoneCarouselImages'
 type PhoneMockupProps = {
   className?: string
   images?: string[]
+  appLabel?: string
 }
 
 const AUTO_MS = 11_000
@@ -16,7 +17,7 @@ const swipeEase = [0.22, 1, 0.36, 1] as const
  * Floating phone frame with gold-trimmed bezel; screen shows a screenshot carousel
  * when `public/bg*` assets exist, otherwise placeholder copy.
  */
-export function PhoneMockup({ className = '', images }: PhoneMockupProps) {
+export function PhoneMockup({ className = '', images, appLabel }: PhoneMockupProps) {
   const { t } = useI18n()
   const slides = images ?? phoneCarouselImageUrls
   const [index, setIndex] = useState(0)
@@ -110,7 +111,7 @@ export function PhoneMockup({ className = '', images }: PhoneMockupProps) {
                 </>
               ) : (
                 <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 px-6 text-center">
-                  <p className="font-display text-lg text-[color:oklch(0.93_0.02_85)]">{t('phone.appLabel')}</p>
+                  <p className="font-display text-lg text-[color:oklch(0.93_0.02_85)]">{appLabel ?? t('phone.appLabel')}</p>
                   <p className="text-xs uppercase tracking-[0.2em] text-gold-500/90">{t('phone.placeholder')}</p>
                   <p className="text-[11px] leading-relaxed text-gray-500">{t('phone.hint')}</p>
                 </div>

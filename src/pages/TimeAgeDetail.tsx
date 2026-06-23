@@ -137,7 +137,7 @@ export default function TimeAgeDetail() {
               </motion.div>
             </div>
 
-            <PhoneMockup className="lg:justify-self-end" images={timeAgeImageUrls} />
+            <PhoneMockup className="lg:justify-self-end" images={timeAgeImageUrls} appLabel={t('timeAge.heroName')} />
           </div>
         </section>
 
