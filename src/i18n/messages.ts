@@ -46,18 +46,15 @@ export const messages = {
       githubLabel: 'GitHub',
       githubUrl: 'https://github.com/wang-xiaowu',
       cardOpenDetail: '了解详情',
-      cardStayTuned: '敬请期待',
     },
     apps: {
       kogo: {
         title: 'Kogo（コゴ）',
         subtitle: '学日语，一步一步向前：教材节奏、记忆复习、JLPT 练习与模考，在同一款应用里。',
-        badge: '进行中',
       },
       timeAge: {
         title: 'Time Age',
         subtitle: '倒数日与纪念日：双向时间追踪，支持精确到小时、年月日，还能和伙伴共享事件。',
-        badge: '进行中',
       },
     },
     kogo: {
@@ -150,20 +147,17 @@ export const messages = {
       githubLabel: 'GitHub',
       githubUrl: 'https://github.com/wang-xiaowu',
       cardOpenDetail: 'Learn more',
-      cardStayTuned: 'Stay tuned',
     },
     apps: {
       kogo: {
         title: 'Kogo（コゴ）',
         subtitle:
           'Learn Japanese step by step: lessons, memory reviews, JLPT practice, and full mocks in one app.',
-        badge: 'Active',
       },
       timeAge: {
         title: 'Time Age',
         subtitle:
           'Countdown and anniversary tracker with bi-directional time tracking, precision modes, and group sharing.',
-        badge: 'Active',
       },
     },
     kogo: {
