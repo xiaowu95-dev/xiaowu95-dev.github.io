@@ -125,7 +125,7 @@ Replace with:
       worksCountLabel: '{{count}} 件作品',
       aboutTitle: '关于我',
       aboutBody:
-        '我是小武，一名普通的程序员。工作之外，我喜欢打磨一些小而完整的产品——做出来、用起来、再慢慢改。这里是我目前在做的几款应用，欢迎试用，也欢迎反馈。',
+        '我是小五，一名普通的程序员。工作之外，我喜欢打磨一些小而完整的产品——做出来、用起来、再慢慢改。这里是我目前在做的几款应用，欢迎试用，也欢迎反馈。',
       githubLabel: 'GitHub',
       githubUrl: 'https://github.com/wang-xiaowu',
       cardOpenDetail: '了解详情',

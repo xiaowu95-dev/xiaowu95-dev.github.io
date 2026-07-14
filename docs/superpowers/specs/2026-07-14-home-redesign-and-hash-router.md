@@ -143,7 +143,7 @@ home: {
   worksTitle: '作品',                // NEW
   worksCountLabel: '{{count}} 件作品', // NEW, {{count}} interpolated
   aboutTitle: '关于我',              // keep
-  aboutBody: '我是小武，一名普通的程序员。工作之外，我喜欢打磨一些小而完整的产品——做出来、用起来、再慢慢改。这里是我目前在做的几款应用，欢迎试用，也欢迎反馈。',  // NEW
+  aboutBody: '我是小五，一名普通的程序员。工作之外，我喜欢打磨一些小而完整的产品——做出来、用起来、再慢慢改。这里是我目前在做的几款应用，欢迎试用，也欢迎反馈。',  // NEW
   githubLabel: 'GitHub',             // NEW
   githubUrl: 'https://github.com/wang-xiaowu',  // NEW
   cardOpenDetail: '了解详情',        // keep
@@ -188,7 +188,7 @@ const label = t('home.worksCountLabel').replace('{{count}}', String(appDefs.leng
 - `worksTitle`: `作品`
 - `worksCountLabel`: `{{count}} 件作品`
 - `aboutTitle`: `关于我`
-- `aboutBody`: `我是小武，一名普通的程序员。工作之外，我喜欢打磨一些小而完整的产品——做出来、用起来、再慢慢改。这里是我目前在做的几款应用，欢迎试用，也欢迎反馈。`
+- `aboutBody`: `我是小五，一名普通的程序员。工作之外，我喜欢打磨一些小而完整的产品——做出来、用起来、再慢慢改。这里是我目前在做的几款应用，欢迎试用，也欢迎反馈。`
 - `githubLabel`: `GitHub`
 - `githubUrl`: `https://github.com/wang-xiaowu`
 
@@ -203,7 +203,7 @@ const label = t('home.worksCountLabel').replace('{{count}}', String(appDefs.leng
 - `githubLabel`: `GitHub`
 - `githubUrl`: `https://github.com/wang-xiaowu`
 
-Voice notes: matches existing copy — first-person, modest, concrete, no marketing words. "小武" chosen to match brand "Xiaowu Dev" and provide a personal name in 关于我 section.
+Voice notes: matches existing copy — first-person, modest, concrete, no marketing words. "小五" chosen to match brand "Xiaowu Dev" and provide a personal name in 关于我 section.
 
 ## 5. Verification
 
