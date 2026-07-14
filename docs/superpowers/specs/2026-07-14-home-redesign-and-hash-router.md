@@ -173,21 +173,11 @@ home: {
 
 ### Interpolation
 
-`worksCountLabel` uses `{{count}}`. The existing `getMessage` helper does not interpolate — check `I18nProvider`/`useI18n` for interpolation support. If absent, either:
-- (a) Add `{{var}}` replacement in `getMessage`, or
-- (b) Hardcode count in component (`'2 件作品'`) since count is known at build time.
+`worksCountLabel` uses `{{count}}`. The existing `getMessage`/`t()` helper returns raw strings without interpolation. Render count inline in the component via simple string replace — no helper change:
 
-**Decision:** Use (b) — hardcode in component. Count = `appDefs.length`. Avoids adding interpolation machinery for one use. If count changes, update is trivial. Document in code comment.
-
-Actually — simpler: skip `worksCountLabel` key entirely. Render count inline in component:
-```tsx
-<span className="text-text/40 text-sm">{appDefs.length} 件作品</span>
-```
-But this hardcodes "件作品" zh-only. So keep `worksCountLabel` key, but interpolate in component:
 ```tsx
 const label = t('home.worksCountLabel').replace('{{count}}', String(appDefs.length))
 ```
-This uses simple string replace, no helper change needed. **Final decision: this approach.**
 
 ## 4. Copy Drafts (final-quality target)
 
