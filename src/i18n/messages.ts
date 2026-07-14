@@ -36,13 +36,15 @@ export const messages = {
     },
     home: {
       portfolioLabel: '作品集',
-      heroTitle: 'Kogo（コゴ）',
-      heroBody:
-        '教材式学习、间隔复习与 JLPT 练习在同一路径里，适合每天稳步向前的人。',
+      heroName: 'Xiaowu Dev',
+      heroTagline: '一名程序员，工作之余写代码、做小产品。',
+      worksTitle: '作品',
+      worksCountLabel: '{{count}} 件作品',
       aboutTitle: '关于我',
       aboutBody:
-        '我是一名普通的程序员，工作之余写代码、做一点小产品。Kogo 是我在打磨的日语学习应用，欢迎试用和反馈。',
-      cardView: '查看',
+        '我是小五，一名普通的程序员。工作之外，我喜欢打磨一些小而完整的产品——做出来、用起来、再慢慢改。这里是我目前在做的几款应用，欢迎试用，也欢迎反馈。',
+      githubLabel: 'GitHub',
+      githubUrl: 'https://github.com/wang-xiaowu',
       cardOpenDetail: '了解详情',
       cardStayTuned: '敬请期待',
     },
@@ -138,13 +140,15 @@ export const messages = {
     },
     home: {
       portfolioLabel: 'Portfolio',
-      heroTitle: 'Kogo（コゴ）',
-      heroBody:
-        'Textbook-style lessons, spaced review, and JLPT drills share one path for people who want steady daily progress. Below is the product and a short note about me.',
+      heroName: 'Xiaowu Dev',
+      heroTagline: 'A developer writing code and small products after hours.',
+      worksTitle: 'Work',
+      worksCountLabel: '{{count}} works',
       aboutTitle: 'About',
       aboutBody:
-        'I am a regular developer. I write code and side projects after work. Kogo is the Japanese study app I am building and polishing, feedback is welcome.',
-      cardView: 'View',
+        "I'm Xiaowu, a regular developer. Outside work, I like polishing small, complete products — build, use, then refine slowly. Below are the apps I'm working on. Try them and feedback is welcome.",
+      githubLabel: 'GitHub',
+      githubUrl: 'https://github.com/wang-xiaowu',
       cardOpenDetail: 'Learn more',
       cardStayTuned: 'Stay tuned',
     },
