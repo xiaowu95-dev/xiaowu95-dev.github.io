@@ -37,12 +37,12 @@ export const messages = {
     home: {
       portfolioLabel: '作品集',
       heroName: 'Xiaowu Dev',
-      heroTagline: '一名程序员，工作之余写代码、做小产品。',
+      heroTagline: '一名程序员，工作之余写写代码。',
       worksTitle: '作品',
       worksCountLabel: '{{count}} 件作品',
       aboutTitle: '关于我',
       aboutBody:
-        '我是小五，一名普通的程序员。工作之外，我喜欢打磨一些小而完整的产品——做出来、用起来、再慢慢改。这里是我目前在做的几款应用，欢迎试用，也欢迎反馈。',
+        '小五，一名普通的程序员。工作之外，我喜欢打磨一些小而完整的产品——做出来、用起来、再慢慢改。这里是我目前在做的几款应用，欢迎试用，也欢迎反馈。',
       githubLabel: 'GitHub',
       githubUrl: 'https://github.com/wang-xiaowu',
       cardOpenDetail: '了解详情',
@@ -50,7 +50,7 @@ export const messages = {
     apps: {
       kogo: {
         title: 'Kogo（コゴ）',
-        subtitle: '学日语，一步一步向前：教材节奏、记忆复习、JLPT 练习与模考，在同一款应用里。',
+        subtitle: '走好学日语的每一步：跟着教材节奏，科学温故知新，还有 JLPT 实战模考。你想在日语路上实现的一切，有这一个 App 陪着就够了。',
       },
       timeAge: {
         title: 'Time Age',
@@ -143,7 +143,7 @@ export const messages = {
       worksCountLabel: '{{count}} works',
       aboutTitle: 'About',
       aboutBody:
-        "I'm Xiaowu, a regular developer. Outside work, I like polishing small, complete products — build, use, then refine slowly. Below are the apps I'm working on. Try them and feedback is welcome.",
+        "Xiaowu, a regular developer. Outside work, I like polishing small, complete products — build, use, then refine slowly. Below are the apps I'm working on. Try them and feedback is welcome.",
       githubLabel: 'GitHub',
       githubUrl: 'https://github.com/wang-xiaowu',
       cardOpenDetail: 'Learn more',
@@ -152,7 +152,7 @@ export const messages = {
       kogo: {
         title: 'Kogo（コゴ）',
         subtitle:
-          'Learn Japanese step by step: lessons, memory reviews, JLPT practice, and full mocks in one app.',
+          'Take Japanese one step at a time: follow your textbook\'s pace, review scientifically, and ace the JLPT with real mock exams. Everything you need on your Japanese journey—all in one place, right by your side.',
       },
       timeAge: {
         title: 'Time Age',
