@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion'
 import { ArrowUpDown, Palette, Settings2, Users } from 'lucide-react'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { PhoneMockup } from '@/components/PhoneMockup'
 import { SiteFooter } from '@/components/SiteFooter'
 import { SiteHeader } from '@/components/SiteHeader'
-import { TIME_AGE_ANDROID_STORE_URL, TIME_AGE_APP_VERSION, TIME_AGE_IOS_STORE_URL } from '@/config/timeAgeStores'
+import { resolveTimeAgeDownloadUrls, TIME_AGE_APP_VERSION, TIME_AGE_RELEASES_URL } from '@/config/timeAgeStores'
 import { getMessage } from '@/i18n/messages'
 import { useI18n } from '@/i18n/useI18n'
 import { timeAgeImageUrls } from '@/lib/timeAgeImages'
@@ -35,6 +35,21 @@ function formatVersionLine(t: (key: string) => string, key: string, version: str
 
 export default function TimeAgeDetail() {
   const { locale, t } = useI18n()
+
+  const [downloadUrls, setDownloadUrls] = useState({
+    ios: TIME_AGE_RELEASES_URL,
+    android: TIME_AGE_RELEASES_URL,
+  })
+
+  useEffect(() => {
+    let active = true
+    resolveTimeAgeDownloadUrls().then((urls) => {
+      if (active) setDownloadUrls(urls)
+    })
+    return () => {
+      active = false
+    }
+  }, [])
 
   useEffect(() => {
     document.title = t('timeAge.pageTitle')
@@ -109,7 +124,7 @@ export default function TimeAgeDetail() {
                 className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-stretch"
               >
                 <a
-                  href={TIME_AGE_IOS_STORE_URL}
+                  href={downloadUrls.ios}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={storeBtnClass}
@@ -122,7 +137,7 @@ export default function TimeAgeDetail() {
                   </span>
                 </a>
                 <a
-                  href={TIME_AGE_ANDROID_STORE_URL}
+                  href={downloadUrls.android}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={storeBtnClass}
