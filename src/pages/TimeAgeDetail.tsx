@@ -1,11 +1,11 @@
-import { motion } from 'framer-motion'
-import { ArrowUpDown, Palette, Settings2, Users } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
+import { ArrowUpDown, ChevronDown, Palette, Settings2, Users } from 'lucide-react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { PhoneMockup } from '@/components/PhoneMockup'
 import { SiteFooter } from '@/components/SiteFooter'
 import { SiteHeader } from '@/components/SiteHeader'
-import { resolveTimeAgeDownloadUrls, TIME_AGE_APP_VERSION, TIME_AGE_RELEASES_URL } from '@/config/timeAgeStores'
+import { resolveTimeAgeDownloads, TIME_AGE_DOWNLOAD_FALLBACK, type TimeAgeDownloads } from '@/config/timeAgeStores'
 import { getMessage } from '@/i18n/messages'
 import { useI18n } from '@/i18n/useI18n'
 import { timeAgeImageUrls } from '@/lib/timeAgeImages'
@@ -26,25 +26,125 @@ const FEATURE_KEYS: Record<(typeof featureDefs)[number]['id'], readonly [string,
 
 const sectionEase = [0.22, 1, 0.36, 1] as const
 
-const storeBtnClass =
-  'inline-flex h-auto min-h-12 flex-col items-start justify-center gap-0.5 rounded-full border border-gold-500/35 bg-[#0c0c0c] px-7 py-3.5 text-left shadow-[0_16px_40px_rgba(0,0,0,0.45)] transition duration-300 ease-out hover:border-gold-400/60 hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-500'
-
 function formatVersionLine(t: (key: string) => string, key: string, version: string) {
   return t(key).replace(/\{\{v\}\}/g, version)
+}
+
+function SplitDownloadButton({
+  titleKey,
+  versionKey,
+  version,
+  mirrorUrl,
+  githubUrl,
+}: {
+  titleKey: string
+  versionKey: string
+  version: string | null
+  mirrorUrl: string
+  githubUrl: string
+}) {
+  const { t } = useI18n()
+  const [open, setOpen] = useState(false)
+  const ref = useRef<HTMLDivElement>(null)
+
+  const close = useCallback(() => setOpen(false), [])
+
+  useEffect(() => {
+    if (!open) return
+    const onDown = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) close()
+    }
+    document.addEventListener('mousedown', onDown)
+    return () => document.removeEventListener('mousedown', onDown)
+  }, [open, close])
+
+  const onKey = useCallback(
+    (e: React.KeyboardEvent) => {
+      if (e.key === 'Escape') close()
+    },
+    [close],
+  )
+
+  return (
+    <div ref={ref} className="relative inline-flex items-stretch" onKeyDown={onKey}>
+      {/* Primary — mirror (default action) */}
+      <a
+        href={mirrorUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex min-h-12 flex-col items-start justify-center gap-0.5 rounded-l-full rounded-r-none border border-gold-500/35 border-r-0 bg-[#0c0c0c] px-7 py-3.5 text-left shadow-[0_16px_40px_rgba(0,0,0,0.45)] transition duration-300 ease-out hover:border-gold-400/60 hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-500"
+      >
+        <span className="text-sm font-semibold text-[color:oklch(0.93_0.02_85)]">
+          {t(titleKey)}
+        </span>
+        {version && (
+          <span className="text-xs font-normal text-gray-500">
+            {formatVersionLine(t, versionKey, version)}
+          </span>
+        )}
+      </a>
+
+      {/* Divider */}
+      <div className="w-px bg-gold-500/35" />
+
+      {/* Caret toggle */}
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-haspopup="menu"
+        aria-expanded={open}
+        className="inline-flex items-center justify-center rounded-r-full border border-gold-500/35 border-l-0 bg-[#0c0c0c] px-2 text-gold-500 transition duration-300 ease-out hover:border-gold-400/60 hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-500"
+      >
+        <ChevronDown className="h-4 w-4" strokeWidth={1.8} />
+      </button>
+
+      {/* Dropdown */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: -4, scale: 0.97 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -4, scale: 0.97 }}
+            transition={{ duration: 0.15, ease: 'easeOut' }}
+            className="absolute left-0 top-full z-10 mt-2 min-w-[200px] overflow-hidden rounded-xl border border-gold-500/35 bg-[#0c0c0c] shadow-[0_16px_40px_rgba(0,0,0,0.45)]"
+            role="menu"
+          >
+            <a
+              href={mirrorUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block px-4 py-2.5 text-sm text-gold-500/90 transition-colors hover:bg-white/5"
+              role="menuitem"
+              onClick={close}
+            >
+              {t('timeAge.downloadMirror')}
+            </a>
+            <a
+              href={githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block px-4 py-2.5 text-sm text-gold-500/90 transition-colors hover:bg-white/5"
+              role="menuitem"
+              onClick={close}
+            >
+              {t('timeAge.downloadGithub')}
+            </a>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  )
 }
 
 export default function TimeAgeDetail() {
   const { locale, t } = useI18n()
 
-  const [downloadUrls, setDownloadUrls] = useState({
-    ios: TIME_AGE_RELEASES_URL,
-    android: TIME_AGE_RELEASES_URL,
-  })
+  const [downloads, setDownloads] = useState<TimeAgeDownloads>(TIME_AGE_DOWNLOAD_FALLBACK)
 
   useEffect(() => {
     let active = true
-    resolveTimeAgeDownloadUrls().then((urls) => {
-      if (active) setDownloadUrls(urls)
+    resolveTimeAgeDownloads().then((next) => {
+      if (active) setDownloads(next)
     })
     return () => {
       active = false
@@ -123,32 +223,20 @@ export default function TimeAgeDetail() {
                 transition={{ duration: 0.55, ease: sectionEase, delay: 0.26 }}
                 className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-stretch"
               >
-                <a
-                  href={downloadUrls.ios}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={storeBtnClass}
-                >
-                  <span className="text-sm font-semibold text-[color:oklch(0.93_0.02_85)]">
-                    {t('timeAge.storeIosTitle')}
-                  </span>
-                  <span className="text-xs font-normal text-gray-500">
-                    {formatVersionLine(t, 'timeAge.storeIosVersion', TIME_AGE_APP_VERSION)}
-                  </span>
-                </a>
-                <a
-                  href={downloadUrls.android}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={storeBtnClass}
-                >
-                  <span className="text-sm font-semibold text-[color:oklch(0.93_0.02_85)]">
-                    {t('timeAge.storeAndroidTitle')}
-                  </span>
-                  <span className="text-xs font-normal text-gray-500">
-                    {formatVersionLine(t, 'timeAge.storeAndroidVersion', TIME_AGE_APP_VERSION)}
-                  </span>
-                </a>
+                <SplitDownloadButton
+                  titleKey="timeAge.storeIosTitle"
+                  versionKey="timeAge.storeIosVersion"
+                  version={downloads.ios.version}
+                  mirrorUrl={downloads.ios.mirror}
+                  githubUrl={downloads.ios.source}
+                />
+                <SplitDownloadButton
+                  titleKey="timeAge.storeAndroidTitle"
+                  versionKey="timeAge.storeAndroidVersion"
+                  version={downloads.android.version}
+                  mirrorUrl={downloads.android.mirror}
+                  githubUrl={downloads.android.source}
+                />
               </motion.div>
             </div>
 

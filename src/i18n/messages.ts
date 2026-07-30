@@ -112,6 +112,8 @@ export const messages = {
       storeIosVersion: '最新版本：{{v}}',
       storeAndroidTitle: 'Android 下载',
       storeAndroidVersion: '最新版本：{{v}}',
+      downloadGithub: 'GitHub 源',
+      downloadMirror: '镜像下载 (国内加速)',
     },
     footer: {
       copyrightLine: '© Copyright 2026, All Rights Reserved by Xiaowu Dev',
@@ -215,6 +217,8 @@ export const messages = {
       storeIosVersion: 'Latest version: {{v}}',
       storeAndroidTitle: 'Android download',
       storeAndroidVersion: 'Latest version: {{v}}',
+      downloadGithub: 'GitHub',
+      downloadMirror: 'Mirror (CN accelerated)',
     },
     footer: {
       copyrightLine: '© Copyright 2026, All Rights Reserved by Xiaowu Dev',
