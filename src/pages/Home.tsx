@@ -133,15 +133,26 @@ export default function Home() {
               <p className="mt-4 max-w-readable leading-relaxed text-gray-400">
                 {t('home.aboutBody')}
               </p>
-              <a
-                href={t('home.githubUrl')}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-gold-500 underline-offset-4 hover:underline"
-              >
-                {t('home.githubLabel')}
-                <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} aria-hidden />
-              </a>
+              <div className="mt-6 flex flex-col items-start gap-3">
+                <a
+                  href={t('home.githubUrl')}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-medium text-gold-500 underline-offset-4 hover:underline"
+                >
+                  {t('home.githubLabel')}
+                  <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} aria-hidden />
+                </a>
+                <a
+                  href={t('home.blogUrl')}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-medium text-gold-500 underline-offset-4 hover:underline"
+                >
+                  {t('home.blogLabel')}
+                  <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} aria-hidden />
+                </a>
+              </div>
             </motion.div>
           </div>
         </section>

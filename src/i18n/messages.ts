@@ -45,6 +45,8 @@ export const messages = {
         '小五，一名普通的程序员。工作之外，我喜欢打磨一些小而完整的产品——做出来、用起来、再慢慢改。这里是我目前在做的几款应用，欢迎试用，也欢迎反馈。',
       githubLabel: 'GitHub',
       githubUrl: 'https://github.com/wang-xiaowu',
+      blogLabel: '博客',
+      blogUrl: 'https://www.xiaowu95.wang/',
       cardOpenDetail: '了解详情',
     },
     apps: {
@@ -112,6 +114,7 @@ export const messages = {
       storeIosVersion: '最新版本：{{v}}',
       storeAndroidTitle: 'Android 下载',
       storeAndroidVersion: '最新版本：{{v}}',
+      storeAndroidLatest: '最新版本',
       downloadGithub: 'GitHub 源',
       downloadMirror: '镜像下载 (国内加速)',
     },
@@ -148,6 +151,8 @@ export const messages = {
         "Xiaowu, a regular developer. Outside work, I like polishing small, complete products — build, use, then refine slowly. Below are the apps I'm working on. Try them and feedback is welcome.",
       githubLabel: 'GitHub',
       githubUrl: 'https://github.com/wang-xiaowu',
+      blogLabel: 'Blog',
+      blogUrl: 'https://www.xiaowu95.wang/',
       cardOpenDetail: 'Learn more',
     },
     apps: {
@@ -217,6 +222,7 @@ export const messages = {
       storeIosVersion: 'Latest version: {{v}}',
       storeAndroidTitle: 'Android download',
       storeAndroidVersion: 'Latest version: {{v}}',
+      storeAndroidLatest: 'Latest version',
       downloadGithub: 'GitHub',
       downloadMirror: 'Mirror (CN accelerated)',
     },

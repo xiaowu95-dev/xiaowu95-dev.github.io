@@ -17,6 +17,9 @@ function trimEnv(value: string | undefined): string {
 const RELEASES_API = 'https://api.github.com/repos/xiaowu95-dev/time_age_release/releases'
 export const TIME_AGE_RELEASES_URL = 'https://github.com/xiaowu95-dev/time_age_release/releases'
 
+// Android ships via Google Play; iOS still via GitHub release assets.
+export const TIME_AGE_ANDROID_STORE_URL = 'https://play.google.com/store/apps/details?id=com.timeage.app'
+
 // China mirror prefix for GitHub release downloads. Override via env if a
 // different proxy is preferred.
 export const TIME_AGE_MIRROR_PREFIX =
