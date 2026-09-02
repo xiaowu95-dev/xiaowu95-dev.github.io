@@ -72,7 +72,7 @@ function SplitDownloadButton({
         href={mirrorUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex min-h-12 flex-col items-start justify-center gap-0.5 rounded-l-full rounded-r-none border border-gold-500/35 border-r-0 bg-[#0c0c0c] px-7 py-3.5 text-left shadow-[0_16px_40px_rgba(0,0,0,0.45)] transition duration-300 ease-out hover:border-gold-400/60 hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-500"
+        className="inline-flex min-h-12 flex-1 flex-col items-start justify-center gap-0.5 rounded-l-full rounded-r-none border border-gold-500/35 border-r-0 bg-[#0c0c0c] px-7 py-3.5 text-left shadow-[0_16px_40px_rgba(0,0,0,0.45)] transition duration-300 ease-out hover:border-gold-400/60 hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-500"
       >
         <span className="text-sm font-semibold text-[color:oklch(0.93_0.02_85)]">
           {t(titleKey)}
