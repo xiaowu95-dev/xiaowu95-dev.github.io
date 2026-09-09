@@ -35,13 +35,15 @@ function SplitDownloadButton({
   versionKey,
   version,
   mirrorUrl,
-  githubUrl,
+  altUrl,
+  altLabelKey,
 }: {
   titleKey: string
   versionKey: string
   version: string | null
   mirrorUrl: string
-  githubUrl: string
+  altUrl: string
+  altLabelKey: string
 }) {
   const { t } = useI18n()
   const [open, setOpen] = useState(false)
@@ -120,14 +122,14 @@ function SplitDownloadButton({
               {t('timeAge.downloadMirror')}
             </a>
             <a
-              href={githubUrl}
+              href={altUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="block px-4 py-2.5 text-sm text-gold-500/90 transition-colors hover:bg-white/5"
               role="menuitem"
               onClick={close}
             >
-              {t('timeAge.downloadGithub')}
+              {t(altLabelKey)}
             </a>
           </motion.div>
         )}
@@ -228,21 +230,17 @@ export default function TimeAgeDetail() {
                   versionKey="timeAge.storeIosVersion"
                   version={downloads.ios.version}
                   mirrorUrl={downloads.ios.mirror}
-                  githubUrl={downloads.ios.source}
+                  altUrl={downloads.ios.source}
+                  altLabelKey="timeAge.downloadGithub"
                 />
-                <a
-                  href={TIME_AGE_ANDROID_STORE_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex min-h-12 flex-col items-start justify-center gap-0.5 rounded-full border border-gold-500/35 bg-[#0c0c0c] px-7 py-3.5 text-center shadow-[0_16px_40px_rgba(0,0,0,0.45)] transition duration-300 ease-out hover:border-gold-400/60 hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-500"
-                >
-                  <span className="text-sm font-semibold text-[color:oklch(0.93_0.02_85)]">
-                    {t('timeAge.storeAndroidTitle')}
-                  </span>
-                  <span className="text-xs font-normal text-gray-500">
-                    {t('timeAge.storeAndroidLatest')}
-                  </span>
-                </a>
+                <SplitDownloadButton
+                  titleKey="timeAge.storeAndroidTitle"
+                  versionKey="timeAge.storeAndroidVersion"
+                  version={downloads.android.version}
+                  mirrorUrl={downloads.android.mirror}
+                  altUrl={TIME_AGE_ANDROID_STORE_URL}
+                  altLabelKey="timeAge.downloadPlayStore"
+                />
               </motion.div>
             </div>
 

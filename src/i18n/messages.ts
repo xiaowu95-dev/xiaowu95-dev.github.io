@@ -114,8 +114,8 @@ export const messages = {
       storeIosVersion: '最新版本：{{v}}',
       storeAndroidTitle: 'Android 下载',
       storeAndroidVersion: '最新版本：{{v}}',
-      storeAndroidLatest: '最新版本',
       downloadGithub: 'GitHub 源',
+      downloadPlayStore: '谷歌商店',
       downloadMirror: '镜像下载 (国内加速)',
     },
     footer: {
@@ -222,8 +222,8 @@ export const messages = {
       storeIosVersion: 'Latest version: {{v}}',
       storeAndroidTitle: 'Android download',
       storeAndroidVersion: 'Latest version: {{v}}',
-      storeAndroidLatest: 'Latest version',
       downloadGithub: 'GitHub',
+      downloadPlayStore: 'Google Play',
       downloadMirror: 'Mirror (CN accelerated)',
     },
     footer: {
