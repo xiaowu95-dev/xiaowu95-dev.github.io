@@ -34,16 +34,16 @@ function SplitDownloadButton({
   titleKey,
   versionKey,
   version,
-  mirrorUrl,
+  primaryUrl,
   altUrl,
   altLabelKey,
 }: {
   titleKey: string
   versionKey: string
   version: string | null
-  mirrorUrl: string
-  altUrl: string
-  altLabelKey: string
+  primaryUrl: string
+  altUrl?: string
+  altLabelKey?: string
 }) {
   const { t } = useI18n()
   const [open, setOpen] = useState(false)
@@ -67,14 +67,18 @@ function SplitDownloadButton({
     [close],
   )
 
+  const hasAlt = Boolean(altUrl && altLabelKey)
+
   return (
     <div ref={ref} className="relative inline-flex items-stretch" onKeyDown={onKey}>
-      {/* Primary — mirror (default action) */}
+      {/* Primary download */}
       <a
-        href={mirrorUrl}
+        href={primaryUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex min-h-12 flex-1 flex-col items-start justify-center gap-0.5 rounded-l-full rounded-r-none border border-gold-500/35 border-r-0 bg-[#0c0c0c] px-7 py-3.5 text-left shadow-[0_16px_40px_rgba(0,0,0,0.45)] transition duration-300 ease-out hover:border-gold-400/60 hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-500"
+        className={`inline-flex min-h-12 flex-1 flex-col items-start justify-center gap-0.5 border border-gold-500/35 bg-[#0c0c0c] px-7 py-3.5 text-left shadow-[0_16px_40px_rgba(0,0,0,0.45)] transition duration-300 ease-out hover:border-gold-400/60 hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-500 ${
+          hasAlt ? 'rounded-l-full rounded-r-none border-r-0' : 'rounded-full'
+        }`}
       >
         <span className="text-sm font-semibold text-[color:oklch(0.93_0.02_85)]">
           {t(titleKey)}
@@ -86,54 +90,48 @@ function SplitDownloadButton({
         )}
       </a>
 
-      {/* Divider */}
-      <div className="w-px bg-gold-500/35" />
+      {hasAlt && (
+        <>
+          {/* Divider */}
+          <div className="w-px bg-gold-500/35" />
 
-      {/* Caret toggle */}
-      <button
-        type="button"
-        onClick={() => setOpen((v) => !v)}
-        aria-haspopup="menu"
-        aria-expanded={open}
-        className="inline-flex items-center justify-center rounded-r-full border border-gold-500/35 border-l-0 bg-[#0c0c0c] px-2 text-gold-500 transition duration-300 ease-out hover:border-gold-400/60 hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-500"
-      >
-        <ChevronDown className="h-4 w-4" strokeWidth={1.8} />
-      </button>
-
-      {/* Dropdown */}
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ opacity: 0, y: -4, scale: 0.97 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -4, scale: 0.97 }}
-            transition={{ duration: 0.15, ease: 'easeOut' }}
-            className="absolute left-0 top-full z-10 mt-2 min-w-[200px] overflow-hidden rounded-xl border border-gold-500/35 bg-[#0c0c0c] shadow-[0_16px_40px_rgba(0,0,0,0.45)]"
-            role="menu"
+          {/* Caret toggle */}
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-haspopup="menu"
+            aria-expanded={open}
+            className="inline-flex items-center justify-center rounded-r-full border border-gold-500/35 border-l-0 bg-[#0c0c0c] px-2 text-gold-500 transition duration-300 ease-out hover:border-gold-400/60 hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-500"
           >
-            <a
-              href={mirrorUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block px-4 py-2.5 text-sm text-gold-500/90 transition-colors hover:bg-white/5"
-              role="menuitem"
-              onClick={close}
-            >
-              {t('timeAge.downloadMirror')}
-            </a>
-            <a
-              href={altUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block px-4 py-2.5 text-sm text-gold-500/90 transition-colors hover:bg-white/5"
-              role="menuitem"
-              onClick={close}
-            >
-              {t(altLabelKey)}
-            </a>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            <ChevronDown className="h-4 w-4" strokeWidth={1.8} />
+          </button>
+
+          {/* Dropdown */}
+          <AnimatePresence>
+            {open && (
+              <motion.div
+                initial={{ opacity: 0, y: -4, scale: 0.97 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -4, scale: 0.97 }}
+                transition={{ duration: 0.15, ease: 'easeOut' }}
+                className="absolute left-0 top-full z-10 mt-2 min-w-[200px] overflow-hidden rounded-xl border border-gold-500/35 bg-[#0c0c0c] shadow-[0_16px_40px_rgba(0,0,0,0.45)]"
+                role="menu"
+              >
+                <a
+                  href={altUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block px-4 py-2.5 text-sm text-gold-500/90 transition-colors hover:bg-white/5"
+                  role="menuitem"
+                  onClick={close}
+                >
+                  {altLabelKey && t(altLabelKey)}
+                </a>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </>
+      )}
     </div>
   )
 }
@@ -229,15 +227,13 @@ export default function TimeAgeDetail() {
                   titleKey="timeAge.storeIosTitle"
                   versionKey="timeAge.storeIosVersion"
                   version={downloads.ios.version}
-                  mirrorUrl={downloads.ios.mirror}
-                  altUrl={downloads.ios.source}
-                  altLabelKey="timeAge.downloadGithub"
+                  primaryUrl={downloads.ios.source}
                 />
                 <SplitDownloadButton
                   titleKey="timeAge.storeAndroidTitle"
                   versionKey="timeAge.storeAndroidVersion"
                   version={downloads.android.version}
-                  mirrorUrl={downloads.android.mirror}
+                  primaryUrl={downloads.android.source}
                   altUrl={TIME_AGE_ANDROID_STORE_URL}
                   altLabelKey="timeAge.downloadPlayStore"
                 />

@@ -6,13 +6,7 @@
  * Each release carries one installable asset (Android .apk, iOS .zip). The
  * store buttons resolve to the latest of each at runtime via the GitHub
  * releases API, so a new publish shows up without a site redeploy.
- *
- * Each platform exposes two download URLs: the github.com source and a mirror
- * (gh-proxy.org by default) for users where GitHub is slow/blocked.
  */
-function trimEnv(value: string | undefined): string {
-  return (value ?? '').trim()
-}
 
 const RELEASES_API = 'https://api.github.com/repos/xiaowu95-dev/time_age_release/releases'
 export const TIME_AGE_RELEASES_URL = 'https://github.com/xiaowu95-dev/time_age_release/releases'
@@ -20,16 +14,9 @@ export const TIME_AGE_RELEASES_URL = 'https://github.com/xiaowu95-dev/time_age_r
 // Android ships via Google Play; iOS still via GitHub release assets.
 export const TIME_AGE_ANDROID_STORE_URL = 'https://play.google.com/store/apps/details?id=com.timeage.app'
 
-// China mirror prefix for GitHub release downloads. Override via env if a
-// different proxy is preferred.
-export const TIME_AGE_MIRROR_PREFIX =
-  trimEnv(import.meta.env.VITE_TIME_AGE_MIRROR_PREFIX) || 'https://gh-proxy.org/'
-
 export interface PlatformDownload {
   /** github.com direct asset URL */
   source: string
-  /** mirror of the source URL (same URL when mirroring doesn't apply) */
-  mirror: string
   /** resolved version, e.g. "1.4.4"; null while unresolved */
   version: string | null
 }
@@ -40,8 +27,8 @@ export interface TimeAgeDownloads {
 }
 
 export const TIME_AGE_DOWNLOAD_FALLBACK: TimeAgeDownloads = {
-  android: { source: TIME_AGE_RELEASES_URL, mirror: TIME_AGE_RELEASES_URL, version: null },
-  ios: { source: TIME_AGE_RELEASES_URL, mirror: TIME_AGE_RELEASES_URL, version: null },
+  android: { source: TIME_AGE_RELEASES_URL, version: null },
+  ios: { source: TIME_AGE_RELEASES_URL, version: null },
 }
 
 interface GithubRelease {
@@ -57,13 +44,6 @@ interface GithubRelease {
 function versionFromTag(tag: string): string | null {
   const v = tag.replace(/^v/, '').split('-')[0]
   return v || null
-}
-
-/** Only proxy real release-asset URLs; leave the releases index unmirrored. */
-function mirrorOf(url: string): string {
-  if (!url.includes('/releases/download/')) return url
-  const prefix = TIME_AGE_MIRROR_PREFIX.endsWith('/') ? TIME_AGE_MIRROR_PREFIX : `${TIME_AGE_MIRROR_PREFIX}/`
-  return prefix + url
 }
 
 /**
@@ -97,8 +77,8 @@ export async function resolveTimeAgeDownloads(): Promise<TimeAgeDownloads> {
     const iosUrl = assetUrl(ios, (a) => a.name.endsWith('.zip'))
 
     return {
-      android: { source: androidUrl, mirror: mirrorOf(androidUrl), version: versionFromTag(android?.tag_name ?? '') },
-      ios: { source: iosUrl, mirror: mirrorOf(iosUrl), version: versionFromTag(ios?.tag_name ?? '') },
+      android: { source: androidUrl, version: versionFromTag(android?.tag_name ?? '') },
+      ios: { source: iosUrl, version: versionFromTag(ios?.tag_name ?? '') },
     }
   } catch {
     return TIME_AGE_DOWNLOAD_FALLBACK
