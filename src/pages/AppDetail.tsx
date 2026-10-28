@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { PhoneMockup } from '@/components/PhoneMockup'
 import { SiteFooter } from '@/components/SiteFooter'
 import { SiteHeader } from '@/components/SiteHeader'
+import { SplitDownloadButton } from '@/components/SplitDownloadButton'
 import { KOGO_ANDROID_STORE_URL, KOGO_APP_VERSION, KOGO_IOS_STORE_URL } from '@/config/kogoStores'
 import { getMessage } from '@/i18n/messages'
 import { useI18n } from '@/i18n/useI18n'
@@ -24,13 +25,6 @@ const FEATURE_KEYS: Record<(typeof featureDefs)[number]['id'], readonly [string,
 }
 
 const sectionEase = [0.22, 1, 0.36, 1] as const
-
-const storeBtnClass =
-  'inline-flex h-auto min-h-12 flex-col items-start justify-center gap-0.5 rounded-full border border-gold-500/35 bg-[#0c0c0c] px-7 py-3.5 text-left shadow-[0_16px_40px_rgba(0,0,0,0.45)] transition duration-300 ease-out hover:border-gold-400/60 hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-500'
-
-function formatVersionLine(t: (key: string) => string, key: string, version: string) {
-  return t(key).replace(/\{\{v\}\}/g, version)
-}
 
 export default function AppDetail() {
   const { locale, t } = useI18n()
@@ -107,32 +101,18 @@ export default function AppDetail() {
                 transition={{ duration: 0.55, ease: sectionEase, delay: 0.26 }}
                 className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-stretch"
               >
-                <a
-                  href={KOGO_IOS_STORE_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={storeBtnClass}
-                >
-                  <span className="text-sm font-semibold text-[color:oklch(0.93_0.02_85)]">
-                    {t('kogo.storeIosTitle')}
-                  </span>
-                  <span className="text-xs font-normal text-gray-500">
-                    {formatVersionLine(t, 'kogo.storeIosVersion', KOGO_APP_VERSION)}
-                  </span>
-                </a>
-                <a
-                  href={KOGO_ANDROID_STORE_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={storeBtnClass}
-                >
-                  <span className="text-sm font-semibold text-[color:oklch(0.93_0.02_85)]">
-                    {t('kogo.storeAndroidTitle')}
-                  </span>
-                  <span className="text-xs font-normal text-gray-500">
-                    {formatVersionLine(t, 'kogo.storeAndroidVersion', KOGO_APP_VERSION)}
-                  </span>
-                </a>
+                <SplitDownloadButton
+                  titleKey="kogo.storeIosTitle"
+                  versionKey="kogo.storeIosVersion"
+                  version={KOGO_APP_VERSION}
+                  primaryUrl={KOGO_IOS_STORE_URL}
+                />
+                <SplitDownloadButton
+                  titleKey="kogo.storeAndroidTitle"
+                  versionKey="kogo.storeAndroidVersion"
+                  version={KOGO_APP_VERSION}
+                  primaryUrl={KOGO_ANDROID_STORE_URL}
+                />
               </motion.div>
             </div>
 

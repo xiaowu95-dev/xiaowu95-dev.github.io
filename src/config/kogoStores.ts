@@ -7,10 +7,11 @@ function trimEnv(value: string | undefined): string {
   return (value ?? '').trim()
 }
 
-export const KOGO_APP_VERSION = trimEnv(import.meta.env.VITE_KOGO_APP_VERSION) || '1.0.0'
+export const KOGO_APP_VERSION = trimEnv(import.meta.env.VITE_KOGO_APP_VERSION) || '0.1.1'
 
 export const KOGO_IOS_STORE_URL =
   trimEnv(import.meta.env.VITE_KOGO_IOS_URL) || 'https://apps.apple.com/'
 
 export const KOGO_ANDROID_STORE_URL =
-  trimEnv(import.meta.env.VITE_KOGO_ANDROID_URL) || 'https://play.google.com/store'
+  trimEnv(import.meta.env.VITE_KOGO_ANDROID_URL) ||
+  'https://play.google.com/store/apps/details?id=com.kogo.study'

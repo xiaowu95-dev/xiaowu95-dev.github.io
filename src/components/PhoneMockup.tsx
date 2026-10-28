@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { useCallback, useEffect, useState } from 'react'
 import { useI18n } from '@/i18n/useI18n'
-import { phoneCarouselImageUrls } from '@/lib/phoneCarouselImages'
+import { appImageUrls } from '@/lib/appImages'
 
 type PhoneMockupProps = {
   className?: string
@@ -15,11 +15,11 @@ const swipeEase = [0.22, 1, 0.36, 1] as const
 
 /**
  * Floating phone frame with gold-trimmed bezel; screen shows a screenshot carousel
- * when `public/bg*` assets exist, otherwise placeholder copy.
+ * from `public/images/<app>/<locale>/`, otherwise placeholder copy.
  */
 export function PhoneMockup({ className = '', images, appLabel }: PhoneMockupProps) {
-  const { t } = useI18n()
-  const slides = images ?? phoneCarouselImageUrls
+  const { locale, t } = useI18n()
+  const slides = images ?? appImageUrls('kogo', locale)
   const [index, setIndex] = useState(0)
   const count = slides.length
 
@@ -66,6 +66,14 @@ export function PhoneMockup({ className = '', images, appLabel }: PhoneMockupPro
                       key={slides[index]}
                       src={slides[index]}
                       alt=""
+                      onError={(e) => {
+                        // ponytail: per-<img> locale fallback; if a locale dir is missing, show zh
+                        const img = e.currentTarget
+                        if (img.dataset.fb !== '1') {
+                          img.dataset.fb = '1'
+                          img.src = img.src.replace('/en/', '/zh/')
+                        }
+                      }}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
