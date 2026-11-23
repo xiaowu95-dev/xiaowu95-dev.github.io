@@ -6,7 +6,7 @@ import { PhoneMockup } from '@/components/PhoneMockup'
 import { SiteFooter } from '@/components/SiteFooter'
 import { SiteHeader } from '@/components/SiteHeader'
 import { SplitDownloadButton } from '@/components/SplitDownloadButton'
-import { TIME_AGE_ANDROID_STORE_URL, TIME_AGE_DOWNLOADS } from '@/config/timeAgeStores'
+import { TIME_AGE_ANDROID_STORE_URL, TIME_AGE_ANDROID_VERSION } from '@/config/timeAgeStores'
 import { getMessage } from '@/i18n/messages'
 import { useI18n } from '@/i18n/useI18n'
 import { appImageUrls } from '@/lib/appImages'
@@ -29,8 +29,6 @@ const sectionEase = [0.22, 1, 0.36, 1] as const
 
 export default function TimeAgeDetail() {
   const { locale, t } = useI18n()
-
-  const downloads = TIME_AGE_DOWNLOADS
 
   useEffect(() => {
     document.title = t('timeAge.pageTitle')
@@ -107,16 +105,14 @@ export default function TimeAgeDetail() {
                 <SplitDownloadButton
                   titleKey="timeAge.storeIosTitle"
                   versionKey="timeAge.storeIosVersion"
-                  version={downloads.ios.version}
-                  primaryUrl={downloads.ios.source}
+                  version={null}
+                  comingSoon
                 />
                 <SplitDownloadButton
                   titleKey="timeAge.storeAndroidTitle"
                   versionKey="timeAge.storeAndroidVersion"
-                  version={downloads.android.version}
-                  primaryUrl={downloads.android.source}
-                  altUrl={TIME_AGE_ANDROID_STORE_URL}
-                  altLabelKey="timeAge.downloadPlayStore"
+                  version={TIME_AGE_ANDROID_VERSION}
+                  primaryUrl={TIME_AGE_ANDROID_STORE_URL}
                 />
               </motion.div>
             </div>

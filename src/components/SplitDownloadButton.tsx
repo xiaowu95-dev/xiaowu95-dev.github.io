@@ -14,13 +14,15 @@ export function SplitDownloadButton({
   primaryUrl,
   altUrl,
   altLabelKey,
+  comingSoon = false,
 }: {
   titleKey: string
   versionKey: string
   version: string | null
-  primaryUrl: string
+  primaryUrl?: string
   altUrl?: string
   altLabelKey?: string
+  comingSoon?: boolean
 }) {
   const { t } = useI18n()
   const [open, setOpen] = useState(false)
@@ -44,28 +46,44 @@ export function SplitDownloadButton({
     [close],
   )
 
-  const hasAlt = Boolean(altUrl && altLabelKey)
+  const hasAlt = Boolean(!comingSoon && altUrl && altLabelKey)
+  const faceClass = `inline-flex min-h-12 flex-1 flex-col items-start justify-center gap-0.5 border border-gold-500/35 bg-[#0c0c0c] px-7 py-3.5 text-left shadow-[0_16px_40px_rgba(0,0,0,0.45)] ${
+    hasAlt ? 'rounded-l-full rounded-r-none border-r-0' : 'rounded-full'
+  }`
 
-  return (
-    <div ref={ref} className="relative inline-flex items-stretch" onKeyDown={onKey}>
-      {/* Primary download */}
-      <a
-        href={primaryUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={`inline-flex min-h-12 flex-1 flex-col items-start justify-center gap-0.5 border border-gold-500/35 bg-[#0c0c0c] px-7 py-3.5 text-left shadow-[0_16px_40px_rgba(0,0,0,0.45)] transition duration-300 ease-out hover:border-gold-400/60 hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-500 ${
-          hasAlt ? 'rounded-l-full rounded-r-none border-r-0' : 'rounded-full'
-        }`}
-      >
-        <span className="text-sm font-semibold text-[color:oklch(0.93_0.02_85)]">
-          {t(titleKey)}
-        </span>
-        {version && (
+  const label = (
+    <>
+      <span className="text-sm font-semibold text-[color:oklch(0.93_0.02_85)]">
+        {t(titleKey)}
+      </span>
+      {comingSoon ? (
+        <span className="text-xs font-normal text-gray-500">{t('download.comingSoon')}</span>
+      ) : (
+        version && (
           <span className="text-xs font-normal text-gray-500">
             {formatVersionLine(t, versionKey, version)}
           </span>
-        )}
-      </a>
+        )
+      )}
+    </>
+  )
+
+  return (
+    <div ref={ref} className="relative inline-flex items-stretch" onKeyDown={onKey}>
+      {comingSoon ? (
+        <span aria-disabled="true" className={`${faceClass} cursor-default opacity-70`}>
+          {label}
+        </span>
+      ) : (
+        <a
+          href={primaryUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`${faceClass} transition duration-300 ease-out hover:border-gold-400/60 hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-500`}
+        >
+          {label}
+        </a>
+      )}
 
       {hasAlt && (
         <>

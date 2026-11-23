@@ -6,7 +6,7 @@ import { PhoneMockup } from '@/components/PhoneMockup'
 import { SiteFooter } from '@/components/SiteFooter'
 import { SiteHeader } from '@/components/SiteHeader'
 import { SplitDownloadButton } from '@/components/SplitDownloadButton'
-import { KOGO_ANDROID_STORE_URL, KOGO_APP_VERSION, KOGO_IOS_STORE_URL } from '@/config/kogoStores'
+import { KOGO_ANDROID_STORE_URL, KOGO_APP_VERSION } from '@/config/kogoStores'
 import { getMessage } from '@/i18n/messages'
 import { useI18n } from '@/i18n/useI18n'
 
@@ -104,8 +104,8 @@ export default function AppDetail() {
                 <SplitDownloadButton
                   titleKey="kogo.storeIosTitle"
                   versionKey="kogo.storeIosVersion"
-                  version={KOGO_APP_VERSION}
-                  primaryUrl={KOGO_IOS_STORE_URL}
+                  version={null}
+                  comingSoon
                 />
                 <SplitDownloadButton
                   titleKey="kogo.storeAndroidTitle"
